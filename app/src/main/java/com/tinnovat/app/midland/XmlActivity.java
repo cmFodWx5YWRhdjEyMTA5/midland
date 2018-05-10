@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class XmlActivity extends AppCompatActivity  {
 
     // All static variables
-  //  static final String URL = "https://api.androidhive.info/pizza/?format=xml";
-    static final String URL = "http://172.24.163.27:8095/ADInterface/services/ModelADService?wsdl";
+    static final String URL = "https://api.androidhive.info/pizza/?format=xml";
+   // static final String URL = "http://172.24.163.27:8095/ADInterface/services/ModelADService?wsdl";
     // XML node keys
     static final String KEY_ITEM = "item"; // parent node
     static final String KEY_ID = "id";
