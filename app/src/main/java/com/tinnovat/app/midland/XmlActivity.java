@@ -1,17 +1,8 @@
 package com.tinnovat.app.midland;
 
 
-import android.app.ListActivity;
-import android.content.Intent;
-import android.databinding.parser.XMLParser;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,10 +12,11 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class XmlActivity extends ListActivity {
+public class XmlActivity extends AppCompatActivity  {
 
     // All static variables
-    static final String URL = "https://api.androidhive.info/pizza/?format=xml";
+  //  static final String URL = "https://api.androidhive.info/pizza/?format=xml";
+    static final String URL = "http://172.24.163.27:8095/ADInterface/services/ModelADService?wsdl";
     // XML node keys
     static final String KEY_ITEM = "item"; // parent node
     static final String KEY_ID = "id";
@@ -36,10 +28,13 @@ public class XmlActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xml);
+        Thread thread = new Thread(new Runnable() {
 
-
-
-        ArrayList<HashMap<String, String>> menuItems = new ArrayList<HashMap<String, String>>();
+    @Override
+    public void run() {
+        try  {
+            //Your code goes here
+             ArrayList<HashMap<String, String>> menuItems = new ArrayList<HashMap<String, String>>();
 
         XmlParser parser = new XmlParser();
         String xml = parser.getXmlFromUrl(URL); // getting XML
@@ -60,6 +55,16 @@ public class XmlActivity extends ListActivity {
             // adding HashList to ArrayList
             menuItems.add(map);
         }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        });
+
+                thread.start();
+
+
+
 
         /*// Adding menuItems to ListView
         ListAdapter adapter = new SimpleAdapter(this, menuItems,
@@ -92,4 +97,6 @@ public class XmlActivity extends ListActivity {
             }
         });*/
     }
-}
+    }
+
+
