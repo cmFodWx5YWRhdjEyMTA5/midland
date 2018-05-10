@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/business_partner" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/pending_credit_approval" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/pending_debit_approval" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/on_hand_balance" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/available_credit" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+    </LinearLayout>
+
+
+</RelativeLayout>

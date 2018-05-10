@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/background_white">
+    <LinearLayout
+        android:id="@+id/cashRequisitionApproval"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/cash_requisition_approval"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/cashUtiliApproval"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/cash_utilisation_approval"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/productRequestApproval"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/product_requisition_approval"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/purchaseOrderApproval"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/purchase_order_approval"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rescheduleApproval"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/user_task_reschedule_approval"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+</LinearLayout>

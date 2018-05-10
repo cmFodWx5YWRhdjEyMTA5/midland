@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:id="@+id/linerLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/organisation"/>
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/document_no" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="Business Partner" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="PO Date" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/description" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:visibility="invisible"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/description_box"/>
+
+
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linerLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linerLayout1">
+        <TextView
+            style="@style/text_title_small"
+            android:text="@string/no" />
+        <TextView
+        style="@style/text_title"
+        android:text="@string/product" />
+        <TextView
+        style="@style/text_title_small"
+        android:text="@string/qty" />
+        <TextView
+        style="@style/text_title"
+        android:text="@string/price" />
+        <TextView
+        style="@style/text_title"
+        android:text="@string/total" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linerLayout2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/list_view">
+        <TextView
+            style="@style/text_title_small"/>
+        <TextView
+            style="@style/text_title" />
+        <TextView
+            style="@style/text_title_small" />
+        <TextView
+            style="@style/text_title"
+            android:text="@string/sub_total" />
+        <TextView
+            style="@style/text_title"
+            android:text="5000" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/button_ruby"
+            android:text="@string/approve" />
+
+        <TextView
+            style="@style/button_gray"
+            android:text="@string/reject" />
+
+    </LinearLayout>
+
+</RelativeLayout>

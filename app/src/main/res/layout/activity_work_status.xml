@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_white_hdpi">
+    <LinearLayout
+        android:id="@+id/workStatusReport"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/work_status_report"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/workStatusReportList"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/work_status_report_list"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+
+</LinearLayout>

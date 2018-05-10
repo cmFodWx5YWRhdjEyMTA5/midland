@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/background_white">
+    <LinearLayout
+        android:id="@+id/userTaskAssignment"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/user_task_assignment"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/userTaskView"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/user_task_view"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/assignedTaskView"
+        style="@style/option_listing"
+        android:background="@drawable/curved_corner_option_button_ruby">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/assigned_task_view"
+            style="@style/option_listing_text"/>
+    </LinearLayout>
+</LinearLayout>

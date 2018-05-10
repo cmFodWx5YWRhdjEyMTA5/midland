@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/organisation" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/document_number" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/user" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/description" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/comment" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/warehouse" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/price_list" />
+
+            <TextView
+                style="@style/text_description"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/product" />
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/udm" />
+
+            <TextView
+                style="@style/text_title"
+                android:text="@string/quantity" />
+        </LinearLayout>
+
+        <View style="@style/line_style" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout"></ListView>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/button_ruby"
+            android:text="@string/approve" />
+
+        <TextView
+            style="@style/button_gray"
+            android:text="@string/reject" />
+
+    </LinearLayout>
+
+</RelativeLayout>

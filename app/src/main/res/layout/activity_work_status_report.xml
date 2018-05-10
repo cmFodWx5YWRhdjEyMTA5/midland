@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/organisation"/>
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView"/>
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/project" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/sub_project_1" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/sub_project_2" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/phase" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/task" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/sub_task" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/work_name" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/estimated" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/estimated_rate" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/estimated_amount" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/actual" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="Actual Rate" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="Actual Amount" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linerLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/button_detail_ruby"
+            android:text="@string/view_details" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

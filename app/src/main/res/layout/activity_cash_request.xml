@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/requested_to_user"/>
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/informed_to_user"/>
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/requested_to_role" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/informed_to_role" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/requested_date" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/verified_to_user" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/requested_type" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/verified_to_role" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/verified_to_user" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/requisition_record" />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/verified_to_role" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/amount_used" />
+            </LinearLayout>
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/requested_amount" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/utilization_type" />
+            </LinearLayout>
+            <View style="@style/line_style" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/balance_utilised_amount" />
+
+                <EditText
+                    style="@style/edittext_description"
+                    android:background="@drawable/textview_border"
+                    android:hint="@string/utilization_type" />
+            </LinearLayout>
+            <View style="@style/line_style" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/description" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:visibility="invisible"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <EditText
+                style="@style/description_box"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/button_ruby"
+            android:text="@string/submit" />
+
+        <TextView
+            style="@style/button_gray"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
+
+</RelativeLayout>
