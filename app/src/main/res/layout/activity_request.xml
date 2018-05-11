@@ -16,7 +16,7 @@
             style="@style/option_listing_text"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/cashUtiStatus"
+        android:id="@+id/cashUtiRequest"
         style="@style/option_listing"
         android:background="@drawable/curved_corner_option_button_ruby">
 

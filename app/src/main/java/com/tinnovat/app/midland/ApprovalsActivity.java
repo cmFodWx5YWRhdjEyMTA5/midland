@@ -43,6 +43,27 @@ public class ApprovalsActivity extends AppCompatActivity {
                 startActivity(Intent);
             }
         });
+        productRequestApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), ProductRequisitionApprovalActivity.class);
+                startActivity(Intent);
+            }
+        });
+        purchaseOrderApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), PurchaseOrderApprovalActivity.class);
+                startActivity(Intent);
+            }
+        });
+        rescheduleApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), UserTaskRescheduleApprovalActivity.class);
+                startActivity(Intent);
+            }
+        });
 
     }
     @Override

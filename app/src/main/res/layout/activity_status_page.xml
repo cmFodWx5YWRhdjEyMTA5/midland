@@ -38,7 +38,7 @@
             style="@style/option_listing_text"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/AvailableCreditStatus"
+        android:id="@+id/availableCreditStatus"
         style="@style/option_listing"
         android:background="@drawable/curved_corner_option_button_ruby">
 
