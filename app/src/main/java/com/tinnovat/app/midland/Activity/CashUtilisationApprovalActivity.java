@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland;
+package com.tinnovat.app.midland.Activity;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -7,14 +7,14 @@ import android.os.Bundle;
 
 import java.util.Objects;
 
-public class CashRequisitionApprovalActivity extends AppCompatActivity {
+public class CashUtilisationApprovalActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cash_requisition_approval);
+        setContentView(R.layout.activity_cash_utilisation_approval);
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Cash Requisition Approval");
+        getSupportActionBar().setTitle("Cash Utilisation Approval");
     }
 }

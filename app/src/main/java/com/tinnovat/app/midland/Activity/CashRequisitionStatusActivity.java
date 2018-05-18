@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland;
+package com.tinnovat.app.midland.Activity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.tinnovat.app.midland.R;
 import com.tinnovat.app.midland.adapter.PagerAdapter;
 
 public class CashRequisitionStatusActivity extends AppCompatActivity {

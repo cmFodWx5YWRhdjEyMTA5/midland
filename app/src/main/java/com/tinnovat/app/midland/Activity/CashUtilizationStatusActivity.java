@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland;
+package com.tinnovat.app.midland.Activity;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -7,14 +7,14 @@ import android.os.Bundle;
 
 import java.util.Objects;
 
-public class UserTaskViewActivity extends AppCompatActivity {
+public class CashUtilizationStatusActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_task_view);
+        setContentView(R.layout.activity_cash_utilization_status);
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("User Task View");
+        getSupportActionBar().setTitle("Cash Utilization Status");
     }
 }
