@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@mipmap/background_white">
     <LinearLayout
@@ -15,4 +16,16 @@
             android:text="@string/payment_approval"
             style="@style/option_listing_text"/>
     </LinearLayout>
+
+    <com.cuboid.cuboidcirclebutton.CuboidButton
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:cub_border_color="@color/colorPrimary"
+        app:cub_border_radius="4dp"
+        app:cub_color="@color/colorPrimaryDark"
+        app:cub_hover_color="@color/black"
+        app:cub_riple_effect="true"
+        />
 </LinearLayout>
