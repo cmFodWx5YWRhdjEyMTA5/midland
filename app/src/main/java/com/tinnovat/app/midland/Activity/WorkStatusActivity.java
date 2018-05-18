@@ -1,12 +1,9 @@
 package com.tinnovat.app.midland.Activity;
 
-import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
-
-import java.util.Objects;
 
 public class WorkStatusActivity extends AppCompatActivity {
 

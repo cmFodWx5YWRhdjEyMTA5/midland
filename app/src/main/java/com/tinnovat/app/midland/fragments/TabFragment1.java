@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tinnovat.app.midland.R;
+import com.tinnovat.app.midland.Activity.R;
 
 public class TabFragment1 extends Fragment {
 

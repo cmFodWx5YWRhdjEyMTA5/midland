@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/splash"
+    android:background="@drawable/gradient_effect"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activity.LandingPageActivity"
     tools:showIn="@layout/app_bar_landing_page">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -46,7 +45,7 @@
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/logo_text_sub_size" />
-    </LinearLayout>
+    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/landingPageMainLayout"
@@ -54,6 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_centerVertical="true"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -72,13 +74,20 @@
                 <ImageView
                     android:id="@+id/imageView"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/work" />
+                    app:srcCompat="@mipmap/work"
+                    android:tint="@color/green_light"/>
 
                 <TextView
+                    android:id="@+id/textViewWork"
                     style="@style/homepage_text"
                     android:layout_below="@+id/imageView"
                     android:text="@string/work_status"/>
+
             </RelativeLayout>
+
+            <View
+                style="@style/line_vertical" />
+
 
             <RelativeLayout
                 android:id="@+id/layoutPayment"
@@ -89,7 +98,8 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/cash" />
+                    app:srcCompat="@mipmap/cash"
+                    android:tint="@color/green_light"/>
 
                 <TextView
                     style="@style/homepage_text"
@@ -97,6 +107,17 @@
                     android:text="@string/payment" />
             </RelativeLayout>
 
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                style="@style/line_horizontal_left" />
+            <View
+                style="@style/line_horizontal_right" />
 
         </LinearLayout>
 
@@ -116,14 +137,16 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/task" />
+                    app:srcCompat="@mipmap/task"
+                    android:tint="@color/green_light"/>
 
                 <TextView
                     style="@style/homepage_text"
                     android:layout_below="@+id/imageView3"
                     android:text="@string/task" />
             </RelativeLayout>
-
+            <View
+                style="@style/line_vertical" />
             <RelativeLayout
                 android:id="@+id/layoutRequest"
                 style="@style/homepage_right_button"
@@ -133,13 +156,25 @@
                 <ImageView
                     android:id="@+id/imageView4"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/request" />
+                    app:srcCompat="@mipmap/request"
+                    android:tint="@color/green_light"/>
 
                 <TextView
                     style="@style/homepage_text"
                     android:layout_below="@+id/imageView4"
                     android:text="@string/request" />
             </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                style="@style/line_horizontal_left" />
+            <View
+                style="@style/line_horizontal_right" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -162,14 +197,18 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/approve" />
+                    app:srcCompat="@mipmap/approve"
+                    android:tint="@color/green_light"
+
+                    />
 
                 <TextView
                     style="@style/homepage_text"
                     android:layout_below="@+id/imageView5"
                     android:text="@string/approval" />
             </RelativeLayout>
-
+            <View
+                style="@style/line_vertical" />
             <RelativeLayout
                 android:id="@+id/layoutStatus"
                 style="@style/homepage_right_button"
@@ -179,7 +218,8 @@
                 <ImageView
                     android:id="@+id/imageView6"
                     style="@style/landing_page_image"
-                    app:srcCompat="@mipmap/status" />
+                    app:srcCompat="@mipmap/status"
+                    android:tint="@color/green_light"/>
 
                 <TextView
                     style="@style/homepage_text"
@@ -187,6 +227,17 @@
                     android:text="@string/status" />
             </RelativeLayout>
         </LinearLayout>
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                style="@style/line_horizontal_left" />
+            <View
+                style="@style/line_horizontal_right" />
+
+        </LinearLayout>-->
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

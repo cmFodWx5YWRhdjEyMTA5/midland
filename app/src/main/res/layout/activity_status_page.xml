@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/background_white">
+    <LinearLayout style="@style/option_listing_center">
     <LinearLayout
         android:id="@+id/cashRequisitionStatus"
         style="@style/option_listing"
@@ -48,4 +49,5 @@
             android:text="@string/available_credit_status"
             style="@style/option_listing_text"/>
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

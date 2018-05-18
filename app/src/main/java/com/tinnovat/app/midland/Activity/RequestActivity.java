@@ -2,15 +2,13 @@ package com.tinnovat.app.midland.Activity;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.tinnovat.app.midland.R;
 
 import java.util.Objects;
 

@@ -1,13 +1,14 @@
-package com.tinnovat.app.midland;
+package com.tinnovat.app.midland.Activity;
 
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.tinnovat.app.midland.XmlParser;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +28,7 @@ public class XmlActivity extends AppCompatActivity  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xml);
+        setContentView(com.tinnovat.app.midland.Activity.R.layout.activity_xml);
         Thread thread = new Thread(new Runnable() {
 
     @Override

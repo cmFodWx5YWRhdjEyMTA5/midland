@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tinnovat.app.midland">
+    package="com.tinnovat.app.midland.Activity">
 
     <application
         android:allowBackup="true"
@@ -10,115 +10,115 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.LandingPageActivity"
+            android:name=".LandingPageActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity android:name=".Activity.StatusPageActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
-        </activity>
-        <activity android:name=".Activity.PaymentActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
-        </activity>
-        <activity android:name=".Activity.RequestActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
-        </activity>
-        <activity android:name=".Activity.ApprovalsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
-        </activity>
-        <activity android:name=".Activity.TaskActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.WorkStatusActivity">
+        <activity android:name=".StatusPageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
         </activity>
-        <activity android:name=".Activity.CashRequisitionStatusActivity">
+        <activity android:name=".PaymentActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
+        </activity>
+        <activity android:name=".RequestActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
+        </activity>
+        <activity android:name=".ApprovalsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
+        </activity>
+        <activity android:name=".TaskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".WorkStatusActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
+        </activity>
+        <activity android:name=".CashRequisitionStatusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
         </activity>
-        <activity android:name=".Activity.CashRequisitionApprovalActivity">
+        <activity android:name=".CashRequisitionApprovalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
         </activity>
-        <activity android:name=".Activity.CashUtilisationApprovalActivity">
+        <activity android:name=".CashUtilisationApprovalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
         </activity>
-        <activity android:name=".Activity.UserTaskRescheduleApprovalActivity">
+        <activity android:name=".UserTaskRescheduleApprovalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
         </activity>
-        <activity android:name=".Activity.ProductRequisitionApprovalActivity">
+        <activity android:name=".ProductRequisitionApprovalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
         </activity>
-        <activity android:name=".Activity.PurchaseOrderApprovalActivity">
+        <activity android:name=".PurchaseOrderApprovalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
         </activity>
-        <activity android:name=".Activity.WorkStatusReportActivity">
+        <activity android:name=".WorkStatusReportActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.WorkStatusActivity" />
         </activity>
-        <activity android:name=".Activity.UserTaskViewActivity">
+        <activity android:name=".UserTaskViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.TaskActivity" />
         </activity>
-        <activity android:name=".Activity.CashUtilizationRequestActivity">
+        <activity android:name=".CashUtilizationRequestActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.RequestActivity" />
         </activity>
-        <activity android:name=".Activity.CashRequestStatusActivity">
+        <activity android:name=".CashRequestStatusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
         </activity>
-        <activity android:name=".Activity.AvailableCreditStatusActivity">
+        <activity android:name=".AvailableCreditStatusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
         </activity>
-        <activity android:name=".Activity.CashUtilizationStatusActivity">
+        <activity android:name=".CashUtilizationStatusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
 
 
         </activity>
-        <activity android:name=".Activity.CashRequestActivity" />
+        <activity android:name=".CashRequestActivity" />
         <activity android:name=".XmlActivity">
         </activity>
     </application>
