@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/background_white">
+    android:background="@drawable/gradient_effect_status">
     <LinearLayout style="@style/option_listing_center">
     <LinearLayout
         android:id="@+id/cashRequisitionStatus"

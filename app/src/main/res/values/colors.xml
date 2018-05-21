@@ -15,5 +15,12 @@
     <color name="whiteWithOpacity">#BFffffff</color>
     <color name="blue">#152243</color>
     <color name="blue_light">#5990AA</color>
+    <color name="violet">#42206F</color>
+    <color name="color_work">#ccBD4470</color>
+    <color name="color_approval">#cc42206F</color>
+    <color name="color_payment">#cc489684</color>
+    <color name="color_request">#cc2C0E09</color>
+    <color name="color_status">#ccBAD09C</color>
+    <color name="color_task">#cc0885C4</color>
 
 </resources>
