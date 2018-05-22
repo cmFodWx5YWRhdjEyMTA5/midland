@@ -74,7 +74,8 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         modelCRUDRequest.setLoginRequest(loginRequest);
-        modelCRUDRequest.setModelCRUD();
+      //  modelCRUDRequest.setModelCRUD();
+        modelCRUDRequest.setModelCRUD("MLW_Alert","MLV_Alert");
 
 
         data.setCduRequest(modelCRUDRequest);

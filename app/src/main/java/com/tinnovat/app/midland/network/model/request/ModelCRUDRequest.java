@@ -32,7 +32,7 @@ public class ModelCRUDRequest {
         this.modelCRUD = modelCRUD;
     }
 
-    public void setModelCRUD() {
-        this.modelCRUD = new ModelCRUD();
+    public void setModelCRUD(String serviceType,String tableName) {
+        this.modelCRUD = new ModelCRUD(serviceType,tableName);
     }
 }

@@ -19,11 +19,13 @@ public class ModelCRUD {
     @Element(name = "_0:DataRow", required = false)
     private DataRow dataRow;
 
-    public ModelCRUD() {
+    ModelCRUD(String serviceType, String tableName) {
 
         //Todo changed
-        this.serviceType = "MLW_Alert";
-        this.tableName = "MLV_Alert";
+       /* this.serviceType = "MLW_Alert";
+        this.tableName = "MLV_Alert";*/
+        this.serviceType = serviceType;
+        this.tableName = tableName;
        // this.dataRow = new DataRow();
     }
 
