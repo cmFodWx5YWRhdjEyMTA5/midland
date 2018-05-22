@@ -16,18 +16,11 @@ public class ModelCRUD {
     @Element(name = "_0:TableName", required = false)
     private String tableName;
 
+    @Element(name = "_0:Action", required = false)
+    private String action;
+
     @Element(name = "_0:DataRow", required = false)
-    private DataRow dataRow;
-
-    ModelCRUD(String serviceType, String tableName) {
-
-        //Todo changed
-       /* this.serviceType = "MLW_Alert";
-        this.tableName = "MLV_Alert";*/
-        this.serviceType = serviceType;
-        this.tableName = tableName;
-       // this.dataRow = new DataRow();
-    }
+    private DataRowRequest dataRow;
 
     public String getServiceType() {
         return serviceType;
@@ -45,11 +38,19 @@ public class ModelCRUD {
         this.tableName = tableName;
     }
 
-    public DataRow getDataRow() {
+    public DataRowRequest getDataRow() {
         return dataRow;
     }
 
-    public void setDataRow(DataRow dataRow) {
+    public void setDataRow(DataRowRequest dataRow) {
         this.dataRow = dataRow;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }

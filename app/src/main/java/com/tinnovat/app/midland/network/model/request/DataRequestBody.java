@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 @Root(name = "soapenv:Body", strict = false)
 public class DataRequestBody {
 
-    @Element(name = "_0:queryData",required = false)
+    @Element(name = "_0:createUpdateData",required = false)
     private RequestData requestData;
 
     public RequestData getUsStatesRequestData() {

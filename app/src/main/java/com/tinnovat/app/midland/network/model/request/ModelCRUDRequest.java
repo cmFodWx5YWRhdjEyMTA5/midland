@@ -31,8 +31,4 @@ public class ModelCRUDRequest {
     public void setModelCRUD(ModelCRUD modelCRUD) {
         this.modelCRUD = modelCRUD;
     }
-
-    public void setModelCRUD(String serviceType,String tableName) {
-        this.modelCRUD = new ModelCRUD(serviceType,tableName);
-    }
 }

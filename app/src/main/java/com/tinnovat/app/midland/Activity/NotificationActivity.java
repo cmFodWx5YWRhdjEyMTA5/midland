@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
 import com.tinnovat.app.midland.network.model.request.DataRequestBody;
+import com.tinnovat.app.midland.network.model.request.DataRowRequest;
+import com.tinnovat.app.midland.network.model.request.FieldData;
+import com.tinnovat.app.midland.network.model.request.ModelCRUD;
 import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
 import com.tinnovat.app.midland.network.model.request.RequestData;
 import com.tinnovat.app.midland.network.model.request.RequestEnvelope;
@@ -52,35 +56,11 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void initiateService() {
-        RequestEnvelope envelope = new RequestEnvelope();
 
-        DataRequestBody body = new DataRequestBody();
+        //TODO add or change methods accordingly
+//        RequestEnvelope envelope = getRequestEnvelopeGeneral();
 
-        final RequestData data = new RequestData();
-
-        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
-
-        ADLoginRequest loginRequest = new ADLoginRequest();
-
-        //TODO set all available data's here
-        loginRequest.setClientID(1000000);
-        loginRequest.setUser("SuperUser");
-        loginRequest.setPass("System");
-        loginRequest.setLang("en_US");
-        loginRequest.setRoleID(1000000);
-        loginRequest.setOrgID(1000000);
-        loginRequest.setWarehouseID(1000004);
-        loginRequest.setStage(0);
-
-
-        modelCRUDRequest.setLoginRequest(loginRequest);
-      //  modelCRUDRequest.setModelCRUD();
-        modelCRUDRequest.setModelCRUD("MLW_Alert","MLV_Alert");
-
-
-        data.setCduRequest(modelCRUDRequest);
-        body.setUsStatesRequestData(data);
-        envelope.setBody(body);
+        RequestEnvelope envelope = createCashRequest();
 
 
         Call<ResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchData(envelope);
@@ -103,24 +83,155 @@ public class NotificationActivity extends AppCompatActivity {
         });
 
     }
+
+    @NonNull
+    private RequestEnvelope getRequestEnvelopeGeneral() {
+        RequestEnvelope envelope = new RequestEnvelope();
+
+        DataRequestBody body = new DataRequestBody();
+
+        final RequestData data = new RequestData();
+
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("SuperUser");
+        loginRequest.setPass("System");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000004);
+        loginRequest.setStage(0);
+
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+        List<FieldData> fieldDataList = new ArrayList<>();
+
+        FieldData fieldData = new FieldData("SC_Request_ID","1000225");
+
+        fieldDataList.add(fieldData);
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_CashRequisition_View");
+        modelCRUD.setTableName("MLV_cashreq");
+        //  modelCRUD.setAction("action");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to RequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set RequestData object to DataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set DataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+    }
+
+    private RequestEnvelope createCashRequest() {
+
+        RequestEnvelope envelope = new RequestEnvelope();
+
+        DataRequestBody body = new DataRequestBody();
+
+        final RequestData data = new RequestData();
+
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("SuperUser");
+        loginRequest.setPass("System");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000004);
+        loginRequest.setStage(0);
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+        List<FieldData> fieldDataList = new ArrayList<>();
+
+        fieldDataList.add(new FieldData("SC_Request_ID","1000028"));
+        fieldDataList.add(new FieldData("RequestedTo","100"));
+        fieldDataList.add(new FieldData("AD_ReqToRole_ID",""));
+        fieldDataList.add(new FieldData("dateRequested","2018-05-27 00:00:00"));
+        fieldDataList.add(new FieldData("RequisitionType_ID","1000002"));
+        fieldDataList.add(new FieldData("Description","TestNew"));
+        fieldDataList.add(new FieldData("VerifiedToUser","100"));
+        fieldDataList.add(new FieldData("VerifiedToRole",""));
+        fieldDataList.add(new FieldData("RequestedAmount","15000"));
+        fieldDataList.add(new FieldData("IsActive","Y"));
+        fieldDataList.add(new FieldData("UserDailyActivity_ID","1000056"));
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_CashRequisition_View");
+        modelCRUD.setTableName("MLV_cashreq");
+        modelCRUD.setAction("CreateUpdate");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to RequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set RequestData object to DataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set DataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+    }
+
     private Data getParsedData(WindowTabData tabData) {
 
-        List rowList = new ArrayList();
-        for (DataRow item : tabData.getDataSet().getDataRowList()) {
-            Map<String,String> fetchedContent = new HashMap<>();
-            for (FieldDataResponse mapItem : item.getFieldData()) {
-                fetchedContent.put(mapItem.getColumn(),mapItem.getVal());
+        if (tabData.getDataSet() != null && tabData.getDataSet().getDataRowList() != null && !tabData.getDataSet().getDataRowList().isEmpty()) {
+            List rowList = new ArrayList();
+            for (DataRow item : tabData.getDataSet().getDataRowList()) {
+                Map<String, String> fetchedContent = new HashMap<>();
+                for (FieldDataResponse mapItem : item.getFieldData()) {
+                    fetchedContent.put(mapItem.getColumn(), mapItem.getVal());
+                }
+                rowList.add(fetchedContent);
             }
-            rowList.add(fetchedContent);
-        }
 
-        Data data = new Data();
-        //  data.setNumRows(tabData.getNumRows());
-        data.setRowCount(tabData.getRowCount());
-        // data.setStartRow(tabData.getStartRow());
-        //  data.setTotalRows(tabData.getTotalRows());
-        data.setSuccess(tabData.isSuccess());
-        data.setDataSet(rowList);
-        return data;
+            Data data = new Data();
+            //  data.setNumRows(tabData.getNumRows());
+            data.setRowCount(tabData.getRowCount());
+            // data.setStartRow(tabData.getStartRow());
+            //  data.setTotalRows(tabData.getTotalRows());
+            data.setSuccess(tabData.isSuccess());
+            data.setDataSet(rowList);
+            return data;
+        } else
+            return null;
     }
 }
