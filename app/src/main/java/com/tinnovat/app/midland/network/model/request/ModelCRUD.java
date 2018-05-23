@@ -22,6 +22,9 @@ public class ModelCRUD {
     @Element(name = "_0:DataRow", required = false)
     private DataRowRequest dataRow;
 
+    @Element(name = "_0:RecordID", required = false)
+    private String recordID;
+
     public String getServiceType() {
         return serviceType;
     }
@@ -52,5 +55,13 @@ public class ModelCRUD {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public String getRecordID() {
+        return recordID;
     }
 }

@@ -36,8 +36,8 @@ public class ApiClient {
 
         Retrofit retrofit =  new Retrofit.Builder()
                 .addConverterFactory(SimpleXmlConverterFactory.create(serializer))
-               .baseUrl("http://172.24.163.27:8092/")
-               // .baseUrl("http://202.83.55.189:8092/")
+//               .baseUrl("http://172.24.163.27:8092/")
+                .baseUrl("http://202.83.55.189:8092/")
                 .client(okHttpClient)
                 .build();
 

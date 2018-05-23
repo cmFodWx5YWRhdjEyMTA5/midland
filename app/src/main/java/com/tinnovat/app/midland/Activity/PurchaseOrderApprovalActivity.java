@@ -13,17 +13,17 @@ import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
-import com.tinnovat.app.midland.network.model.request.DataRequestBody;
+import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.DataRowRequest;
 import com.tinnovat.app.midland.network.model.request.FieldData;
 import com.tinnovat.app.midland.network.model.request.ModelCRUD;
 import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
-import com.tinnovat.app.midland.network.model.request.RequestData;
-import com.tinnovat.app.midland.network.model.request.RequestEnvelope;
-import com.tinnovat.app.midland.network.model.response.DataRow;
-import com.tinnovat.app.midland.network.model.response.FieldDataResponse;
-import com.tinnovat.app.midland.network.model.response.ResponseEnvelope;
-import com.tinnovat.app.midland.network.model.response.WindowTabData;
+import com.tinnovat.app.midland.network.model.request.query.QueryRequestData;
+import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.DataRow;
+import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
+import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.WindowTabData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,12 +75,12 @@ public class PurchaseOrderApprovalActivity extends AppCompatActivity {
     private void initiateService() {
 
         //TODO add or change methods accordingly
-        RequestEnvelope envelope = getRequestEnvelopeGeneral();
+        QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
 
-        Call<ResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchData(envelope);
-        call.enqueue(new Callback<ResponseEnvelope>() {
+        Call<ResponseQueryEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchQueryData(envelope);
+        call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
-            public void onResponse(Call<ResponseEnvelope> call, Response<ResponseEnvelope> response) {
+            public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -89,7 +89,7 @@ public class PurchaseOrderApprovalActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseEnvelope> call, Throwable t) {
+            public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
                 Toast.makeText(PurchaseOrderApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
@@ -100,12 +100,12 @@ public class PurchaseOrderApprovalActivity extends AppCompatActivity {
 
 
     @NonNull
-    private RequestEnvelope getRequestEnvelopeGeneral() {
-        RequestEnvelope envelope = new RequestEnvelope();
+    private QueryRequestEnvelope getRequestEnvelopeGeneral() {
+        QueryRequestEnvelope envelope = new QueryRequestEnvelope();
 
-        DataRequestBody body = new DataRequestBody();
+        QueryDataRequestBody body = new QueryDataRequestBody();
 
-        final RequestData data = new RequestData();
+        final QueryRequestData data = new QueryRequestData();
 
         ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
 
@@ -146,13 +146,13 @@ public class PurchaseOrderApprovalActivity extends AppCompatActivity {
         modelCRUDRequest.setLoginRequest(loginRequest);
         modelCRUDRequest.setModelCRUD(modelCRUD);
 
-        // Set modelCurdRequest to RequestData
+        // Set modelCurdRequest to QueryRequestData
         data.setCduRequest(modelCRUDRequest);
 
-        //Set RequestData object to DataRequestBody
+        //Set QueryRequestData object to QueryDataRequestBody
         body.setUsStatesRequestData(data);
 
-        //Set DataRequestBody object to RequestEnvelope
+        //Set QueryDataRequestBody object to RequestEnvelope
         envelope.setBody(body);
 
         modelCRUDRequest.setLoginRequest(loginRequest);

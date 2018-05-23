@@ -17,17 +17,24 @@ import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
-import com.tinnovat.app.midland.network.model.request.DataRequestBody;
+import com.tinnovat.app.midland.network.model.request.create.CreateDataRequestBody;
+import com.tinnovat.app.midland.network.model.request.create.CreateRequestData;
+import com.tinnovat.app.midland.network.model.request.create.CreateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.DataRowRequest;
 import com.tinnovat.app.midland.network.model.request.FieldData;
 import com.tinnovat.app.midland.network.model.request.ModelCRUD;
 import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
-import com.tinnovat.app.midland.network.model.request.RequestData;
-import com.tinnovat.app.midland.network.model.request.RequestEnvelope;
-import com.tinnovat.app.midland.network.model.response.DataRow;
-import com.tinnovat.app.midland.network.model.response.FieldDataResponse;
-import com.tinnovat.app.midland.network.model.response.ResponseEnvelope;
-import com.tinnovat.app.midland.network.model.response.WindowTabData;
+import com.tinnovat.app.midland.network.model.request.query.QueryRequestData;
+import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.update.UpdateDataRequestBody;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestData;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.DataRow;
+import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
+import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.WindowTabData;
+import com.tinnovat.app.midland.network.model.response.update.UpdateResponseEnvelope;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,15 +67,23 @@ public class NotificationActivity extends AppCompatActivity {
         //TODO add or change methods accordingly
 //        RequestEnvelope envelope = getRequestEnvelopeGeneral();
 
-        RequestEnvelope envelope = createCashRequest();
+//        processQueryRequest();
+//        processCreateRequest();
+        processUpdateRequest();
 
 
-        Call<ResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchData(envelope);
+    }
+
+    private void processQueryRequest() {
+        QueryRequestEnvelope envelope = queryRequestEnvelope();
 
 
-        call.enqueue(new Callback<ResponseEnvelope>() {
+        Call<ResponseQueryEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchQueryData(envelope);
+
+
+        call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
-            public void onResponse(Call<ResponseEnvelope> call, Response<ResponseEnvelope> response) {
+            public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -76,81 +91,65 @@ public class NotificationActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseEnvelope> call, Throwable t) {
+            public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
-                 Toast.makeText(NotificationActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    @NonNull
-    private RequestEnvelope getRequestEnvelopeGeneral() {
-        RequestEnvelope envelope = new RequestEnvelope();
+    private void processCreateRequest() {
+        CreateRequestEnvelope envelope = createCashRequest();
 
-        DataRequestBody body = new DataRequestBody();
-
-        final RequestData data = new RequestData();
-
-        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
-
-        ADLoginRequest loginRequest = new ADLoginRequest();
-
-        ModelCRUD modelCRUD = new ModelCRUD();
-
-        DataRowRequest dataRow = new DataRowRequest();
+        Call<ResponseQueryEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchCreateData(envelope);
 
 
-        //TODO set all available data's here
-        loginRequest.setClientID(1000000);
-        loginRequest.setUser("SuperUser");
-        loginRequest.setPass("System");
-        loginRequest.setLang("en_US");
-        loginRequest.setRoleID(1000000);
-        loginRequest.setOrgID(1000000);
-        loginRequest.setWarehouseID(1000004);
-        loginRequest.setStage(0);
+        call.enqueue(new Callback<ResponseQueryEnvelope>() {
+            @Override
+            public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                Log.e("Success","Success");
 
+                Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
+                Toast.makeText(NotificationActivity.this,"Success",Toast.LENGTH_SHORT).show();
+            }
 
-        // Params inside dataRow as list (can use a loop or simply add objects to list
-        List<FieldData> fieldDataList = new ArrayList<>();
-
-        FieldData fieldData = new FieldData("SC_Request_ID","1000225");
-
-        fieldDataList.add(fieldData);
-
-        dataRow.setField(fieldDataList);
-
-        // Set modelCurd
-        modelCRUD.setDataRow(dataRow);
-        modelCRUD.setServiceType("MLW_CashRequisition_View");
-        modelCRUD.setTableName("MLV_cashreq");
-        //  modelCRUD.setAction("action");
-
-        // Set modelCurdRequest
-        modelCRUDRequest.setLoginRequest(loginRequest);
-        modelCRUDRequest.setModelCRUD(modelCRUD);
-
-        // Set modelCurdRequest to RequestData
-        data.setCduRequest(modelCRUDRequest);
-
-        //Set RequestData object to DataRequestBody
-        body.setUsStatesRequestData(data);
-
-        //Set DataRequestBody object to RequestEnvelope
-        envelope.setBody(body);
-
-        modelCRUDRequest.setLoginRequest(loginRequest);
-        return envelope;
+            @Override
+            public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
+                Log.e("Success","Success");
+                Toast.makeText(NotificationActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private RequestEnvelope createCashRequest() {
+    private void processUpdateRequest() {
+        UpdateRequestEnvelope envelope = getRequestEnvelopeGeneral();
 
-        RequestEnvelope envelope = new RequestEnvelope();
+        Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
 
-        DataRequestBody body = new DataRequestBody();
 
-        final RequestData data = new RequestData();
+        call.enqueue(new Callback<UpdateResponseEnvelope>() {
+            @Override
+            public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+                Log.e("Success","Success");
+
+//                Data responseData = getParsedData(response.body().getBody().getUsStatesRequestData().getData());
+                Toast.makeText(NotificationActivity.this,"Success",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                Log.e("Success","Success");
+                Toast.makeText(NotificationActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private CreateRequestEnvelope createCashRequest() {
+        CreateRequestEnvelope envelope = new CreateRequestEnvelope();
+
+        CreateDataRequestBody body = new CreateDataRequestBody();
+
+        final CreateRequestData data = new CreateRequestData();
 
         ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
 
@@ -198,13 +197,134 @@ public class NotificationActivity extends AppCompatActivity {
         modelCRUDRequest.setLoginRequest(loginRequest);
         modelCRUDRequest.setModelCRUD(modelCRUD);
 
-        // Set modelCurdRequest to RequestData
+        // Set modelCurdRequest to QueryRequestData
         data.setCduRequest(modelCRUDRequest);
 
-        //Set RequestData object to DataRequestBody
+        //Set QueryRequestData object to QueryDataRequestBody
         body.setUsStatesRequestData(data);
 
-        //Set DataRequestBody object to RequestEnvelope
+        //Set QueryDataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+
+    }
+
+    @NonNull
+    private UpdateRequestEnvelope getRequestEnvelopeGeneral() {
+        UpdateRequestEnvelope envelope = new UpdateRequestEnvelope();
+
+        UpdateDataRequestBody body = new UpdateDataRequestBody();
+
+        final UpdateRequestData data = new UpdateRequestData();
+
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("SuperUser");
+        loginRequest.setPass("System");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000004);
+        loginRequest.setStage(0);
+
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+        List<FieldData> fieldDataList = new ArrayList<>();
+
+        FieldData fieldData = new FieldData("IsApproved","Y");
+
+        fieldDataList.add(fieldData);
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_ProductRequisition_Update");
+        modelCRUD.setTableName("M_Requisition");
+        modelCRUD.setRecordID("1000032");
+        //  modelCRUD.setAction("action");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to QueryRequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set QueryRequestData object to QueryDataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set QueryDataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+    }
+
+    private QueryRequestEnvelope queryRequestEnvelope() {
+
+        QueryRequestEnvelope envelope = new QueryRequestEnvelope();
+
+        QueryDataRequestBody body = new QueryDataRequestBody();
+
+        final QueryRequestData data = new QueryRequestData();
+
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("SuperUser");
+        loginRequest.setPass("System");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000004);
+        loginRequest.setStage(0);
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+        List<FieldData> fieldDataList = new ArrayList<>();
+
+
+        fieldDataList.add(new FieldData("SC_UserTask_ID","1000013"));
+        fieldDataList.add(new FieldData("isReschedule","Y"));
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_Assigned_Task_View");
+        modelCRUD.setTableName("mlv_AssgnTask_view");
+//        modelCRUD.setAction("CreateUpdate");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to QueryRequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set QueryRequestData object to QueryDataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set QueryDataRequestBody object to RequestEnvelope
         envelope.setBody(body);
 
         modelCRUDRequest.setLoginRequest(loginRequest);

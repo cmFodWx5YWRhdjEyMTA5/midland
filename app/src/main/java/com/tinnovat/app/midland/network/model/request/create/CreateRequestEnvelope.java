@@ -1,4 +1,6 @@
-package com.tinnovat.app.midland.network.model.request;
+package com.tinnovat.app.midland.network.model.request.create;
+
+import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
@@ -14,16 +16,16 @@ import org.simpleframework.xml.Root;
         @Namespace(reference = "http://schemas.xmlsoap.org/soap/envelope/", prefix = "soapenv"),
         @Namespace(reference = "http://idempiere.org/ADInterface/1_0", prefix = "_0"),
 })
-public class RequestEnvelope {
+public class CreateRequestEnvelope {
 
     @Element(name = "soapenv:Body", required = false)
-    private DataRequestBody body;
+    private CreateDataRequestBody body;
 
-    public DataRequestBody getBody() {
+    public CreateDataRequestBody getBody() {
         return body;
     }
 
-    public void setBody(DataRequestBody body) {
+    public void setBody(CreateDataRequestBody body) {
         this.body = body;
     }
 }

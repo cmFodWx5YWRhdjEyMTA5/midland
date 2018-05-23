@@ -17,8 +17,11 @@
 
 package com.tinnovat.app.midland.network;
 
-import com.tinnovat.app.midland.network.model.request.RequestEnvelope;
-import com.tinnovat.app.midland.network.model.response.ResponseEnvelope;
+import com.tinnovat.app.midland.network.model.request.create.CreateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
+import com.tinnovat.app.midland.network.model.response.update.UpdateResponseEnvelope;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -39,6 +42,20 @@ public interface ApiInterface {
             "Accept-Charset: utf-8"
     })
     @POST("/ADInterface/services/ModelADService?wsdl")
-    Call<ResponseEnvelope> fetchData(@Body RequestEnvelope body);
+    Call<ResponseQueryEnvelope> fetchQueryData(@Body QueryRequestEnvelope body);
+
+    @Headers({
+            "Content-Type: text/xml",
+            "Accept-Charset: utf-8"
+    })
+    @POST("/ADInterface/services/ModelADService?wsdl")
+    Call<ResponseQueryEnvelope> fetchCreateData(@Body CreateRequestEnvelope body);
+
+    @Headers({
+            "Content-Type: text/xml",
+            "Accept-Charset: utf-8"
+    })
+    @POST("/ADInterface/services/ModelADService?wsdl")
+    Call<UpdateResponseEnvelope> fetchUpdateData(@Body UpdateRequestEnvelope body);
 
 }

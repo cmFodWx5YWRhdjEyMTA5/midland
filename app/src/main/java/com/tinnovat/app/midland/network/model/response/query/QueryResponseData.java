@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland.network.model.response;
+package com.tinnovat.app.midland.network.model.response.query;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
@@ -10,10 +10,10 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "ns1:queryDataResponse", strict = false)
 @Namespace(reference = "http://idempiere.org/ADInterface/1_0", prefix = "ns1")
-public class ResponseData {
+public class QueryResponseData {
 
     @Element(name = "WindowTabData", required = false)
-    private WindowTabData WindowTabData;
+    private com.tinnovat.app.midland.network.model.response.query.WindowTabData WindowTabData;
 
     public WindowTabData getData() {
         return WindowTabData;

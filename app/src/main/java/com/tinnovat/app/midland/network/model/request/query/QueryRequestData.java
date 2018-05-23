@@ -1,4 +1,6 @@
-package com.tinnovat.app.midland.network.model.request;
+package com.tinnovat.app.midland.network.model.request.query;
+
+import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -8,7 +10,7 @@ import org.simpleframework.xml.Root;
  */
 
 @Root(name = "_0:queryData", strict = false)
-public class RequestData {
+public class QueryRequestData {
 
     @Element(name = "_0:ModelCRUDRequest", required = false)
     private ModelCRUDRequest cduRequest;

@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland.network.model.response;
+package com.tinnovat.app.midland.network.model.response.query;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

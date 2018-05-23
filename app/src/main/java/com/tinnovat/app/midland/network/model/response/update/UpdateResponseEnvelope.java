@@ -1,4 +1,6 @@
-package com.tinnovat.app.midland.network.model.response;
+package com.tinnovat.app.midland.network.model.response.update;
+
+import com.tinnovat.app.midland.network.model.response.query.QueryDataResponseBody;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
@@ -10,17 +12,17 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "Envelope", strict = false)
 @Namespace(reference = "http://schemas.xmlsoap.org/soap/envelope/", prefix = "soap")
-public class ResponseEnvelope {
+public class UpdateResponseEnvelope {
 
     @Element(required = false, name = "Body")
     @Namespace(prefix = "soap")
-    private DataResponseBody body;
+    private UpdateDataResponseBody body;
 
-    public DataResponseBody getBody() {
+    public UpdateDataResponseBody getBody() {
         return body;
     }
 
-    public void setBody(DataResponseBody body) {
+    public void setBody(UpdateDataResponseBody body) {
         this.body = body;
     }
 }
