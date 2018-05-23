@@ -20,6 +20,7 @@
                 android:text="@string/organisation" />
 
             <TextView
+                android:id="@+id/org"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -36,6 +37,7 @@
                 android:text="@string/document_number" />
 
             <TextView
+                android:id="@+id/docNo"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -52,6 +54,7 @@
                 android:text="@string/user" />
 
             <TextView
+                android:id="@+id/user"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -68,6 +71,7 @@
                 android:text="@string/description" />
 
             <TextView
+                android:id="@+id/description"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -84,6 +88,7 @@
                 android:text="@string/comment" />
 
             <TextView
+                android:id="@+id/comment"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -101,6 +106,7 @@
                 android:text="@string/warehouse" />
 
             <TextView
+                android:id="@+id/warehouse"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -117,6 +123,7 @@
                 android:text="@string/price_list" />
 
             <TextView
+                android:id="@+id/priceList"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
