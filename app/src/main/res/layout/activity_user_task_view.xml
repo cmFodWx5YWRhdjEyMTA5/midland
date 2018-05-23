@@ -23,6 +23,7 @@
                     android:text="@string/assigned_by"/>
 
                 <TextView
+                    android:id="@+id/assignedBy"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -39,6 +40,7 @@
                     android:text="@string/assigned_date" />
 
                 <TextView
+                    android:id="@+id/assignedDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -55,6 +57,7 @@
                     android:text="@string/estimated_start_date" />
 
                 <TextView
+                    android:id="@+id/estdStartDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -71,6 +74,7 @@
                     android:text="@string/estimated_end_date" />
 
                 <TextView
+                    android:id="@+id/estdEndDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -87,6 +91,7 @@
                     android:text="@string/rescheduled_start_date" />
 
                 <TextView
+                    android:id="@+id/reStartDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -105,6 +110,7 @@
                     android:text="@string/rescheduled_end_date" />
 
                 <TextView
+                    android:id="@+id/reEndDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -122,11 +128,11 @@
 
                 <TextView
                     style="@style/text_description"
-                    android:visibility="invisible"
-                    android:text="TextView" />
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/description"
                 style="@style/description_box"/>
 
 
