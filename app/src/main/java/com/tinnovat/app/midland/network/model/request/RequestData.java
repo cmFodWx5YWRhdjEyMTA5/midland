@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by ADMIN on 5/11/2018.
  */
 
-@Root(name = "_0:createUpdateData", strict = false)
+@Root(name = "_0:queryData", strict = false)
 public class RequestData {
 
     @Element(name = "_0:ModelCRUDRequest", required = false)

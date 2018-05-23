@@ -23,6 +23,7 @@
                     android:text="@string/requested_by"/>
 
                 <TextView
+                    android:id="@+id/requestedBy"
                     style="@style/text_description"
                     android:text="TextView"/>
             </LinearLayout>
@@ -39,6 +40,7 @@
                     android:text="@string/document_no" />
 
                 <TextView
+                    android:id="@+id/docNo"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -55,6 +57,7 @@
                     android:text="@string/requisition_type" />
 
                 <TextView
+                    android:id="@+id/reqType"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -71,6 +74,7 @@
                     android:text="@string/project" />
 
                 <TextView
+                    android:id="@+id/project"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -87,6 +91,7 @@
                     android:text="@string/description" />
 
                 <TextView
+                    android:id="@+id/description"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -103,6 +108,7 @@
                     android:text="@string/requested_amount" />
 
                 <TextView
+                    android:id="@+id/reqAmount"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -119,6 +125,7 @@
                     android:text="@string/requested_date" />
 
                 <TextView
+                    android:id="@+id/reqDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -135,6 +142,7 @@
                     android:text="@string/balance_utilisation_amount" />
 
                 <TextView
+                    android:id="@+id/balanceUtiAmount"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -151,6 +159,7 @@
                     android:text="@string/approval_amount" />
 
                 <TextView
+                    android:id="@+id/approvalAmount"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -186,6 +195,7 @@
                     android:text="@string/forward_to_user" />
 
                 <TextView
+                    android:id="@+id/frwdToUser"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -202,6 +212,7 @@
                     android:text="@string/forward_to_role" />
 
                 <TextView
+                    android:id="@+id/frwdToRole"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
