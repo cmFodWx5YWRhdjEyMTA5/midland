@@ -39,6 +39,7 @@
                     android:text="@string/reschedule_details" />
 
                 <TextView
+                    android:id="@+id/rescheduleDetails"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -55,6 +56,7 @@
                     android:text="@string/status" />
 
                 <TextView
+                    android:id="@+id/status"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -87,6 +89,7 @@
                     android:text="@string/start_date" />
 
                 <TextView
+                    android:id="@+id/startDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -105,6 +108,7 @@
                     android:text="@string/completed_date" />
 
                 <TextView
+                    android:id="@+id/completedDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -118,7 +122,7 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="@string/comments" />
+                    android:text="@string/description" />
 
                 <TextView
                     style="@style/text_description"
@@ -127,6 +131,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/description"
                 style="@style/description_box"/>
 
 

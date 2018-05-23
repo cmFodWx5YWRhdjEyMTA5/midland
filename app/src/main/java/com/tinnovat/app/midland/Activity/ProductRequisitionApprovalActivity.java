@@ -58,7 +58,6 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
         documentNo = findViewById(R.id.docNo);
         userName = findViewById(R.id.user);
         Descrptn = findViewById(R.id.description);
-        comnt = findViewById(R.id.comment);
         warehuse = findViewById(R.id.warehouse);
         priceList = findViewById(R.id.priceList);
 
