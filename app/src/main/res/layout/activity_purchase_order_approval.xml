@@ -21,6 +21,7 @@
                     android:text="@string/organisation"/>
 
                 <TextView
+                    android:id="@+id/org"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -37,6 +38,7 @@
                     android:text="@string/document_no" />
 
                 <TextView
+                    android:id="@+id/docNo"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -53,6 +55,7 @@
                     android:text="Business Partner" />
 
                 <TextView
+                    android:id="@+id/patner"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -69,6 +72,7 @@
                     android:text="PO Date" />
 
                 <TextView
+                    android:id="@+id/poDate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -93,6 +97,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/descrptn"
                 style="@style/description_box"/>
 
 
