@@ -1,12 +1,9 @@
-package com.tinnovat.app.midland.network.model.response.update;
+package com.tinnovat.app.midland.network.model.response;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-
-import java.util.List;
 
 /**
  * Created by ADMIN on 5/24/2018.

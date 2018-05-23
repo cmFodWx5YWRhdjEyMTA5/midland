@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland.network.model.response.update;
+package com.tinnovat.app.midland.network.model.response;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;

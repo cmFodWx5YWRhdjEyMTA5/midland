@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland.network.model.response.update;
+package com.tinnovat.app.midland.network.model.response.create;
 
 import com.tinnovat.app.midland.network.model.response.StandardResponse;
 
@@ -10,9 +10,9 @@ import org.simpleframework.xml.Root;
  * Created by ADMIN on 5/11/2018.
  */
 
-@Root(name = "ns1:updateDataResponse", strict = false)
+@Root(name = "ns1:createUpdateDataResponse", strict = false)
 @Namespace(reference = "http://idempiere.org/ADInterface/1_0", prefix = "ns1")
-public class UpdateResponseData {
+public class CreateResponseData {
 
     @Element(name = "StandardResponse", required = false)
     private StandardResponse standardResponse;

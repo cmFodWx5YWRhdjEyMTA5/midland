@@ -30,6 +30,7 @@ import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope
 import com.tinnovat.app.midland.network.model.request.update.UpdateDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.update.UpdateRequestData;
 import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.create.CreateResponseEnvelope;
 import com.tinnovat.app.midland.network.model.response.query.DataRow;
 import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
 import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
@@ -68,8 +69,8 @@ public class NotificationActivity extends AppCompatActivity {
 //        RequestEnvelope envelope = getRequestEnvelopeGeneral();
 
 //        processQueryRequest();
-//        processCreateRequest();
-        processUpdateRequest();
+        processCreateRequest();
+//        processUpdateRequest();
 
 
     }
@@ -101,20 +102,20 @@ public class NotificationActivity extends AppCompatActivity {
     private void processCreateRequest() {
         CreateRequestEnvelope envelope = createCashRequest();
 
-        Call<ResponseQueryEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchCreateData(envelope);
+        Call<CreateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchCreateData(envelope);
 
 
-        call.enqueue(new Callback<ResponseQueryEnvelope>() {
+        call.enqueue(new Callback<CreateResponseEnvelope>() {
             @Override
-            public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+            public void onResponse(Call<CreateResponseEnvelope> call, Response<CreateResponseEnvelope> response) {
                 Log.e("Success","Success");
 
-                Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
+//                Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
                 Toast.makeText(NotificationActivity.this,"Success",Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
+            public void onFailure(Call<CreateResponseEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
                 Toast.makeText(NotificationActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
@@ -173,6 +174,11 @@ public class NotificationActivity extends AppCompatActivity {
         // Params inside dataRow as list (can use a loop or simply add objects to list
         List<FieldData> fieldDataList = new ArrayList<>();
 
+        fieldDataList.add(new FieldData("C_BPartner_ID","1000010"));
+        fieldDataList.add(new FieldData("AD_User_ID","100"));
+        fieldDataList.add(new FieldData("IsActive","Y"));
+
+       /*
         fieldDataList.add(new FieldData("SC_Request_ID","1000028"));
         fieldDataList.add(new FieldData("RequestedTo","100"));
         fieldDataList.add(new FieldData("AD_ReqToRole_ID",""));
@@ -183,14 +189,14 @@ public class NotificationActivity extends AppCompatActivity {
         fieldDataList.add(new FieldData("VerifiedToRole",""));
         fieldDataList.add(new FieldData("RequestedAmount","15000"));
         fieldDataList.add(new FieldData("IsActive","Y"));
-        fieldDataList.add(new FieldData("UserDailyActivity_ID","1000056"));
+        fieldDataList.add(new FieldData("UserDailyActivity_ID","1000056"));*/
 
         dataRow.setField(fieldDataList);
 
         // Set modelCurd
         modelCRUD.setDataRow(dataRow);
-        modelCRUD.setServiceType("MLW_CashRequisition_View");
-        modelCRUD.setTableName("MLV_cashreq");
+        modelCRUD.setServiceType("MLW_CreateUserDailyCashRequesy_Web");
+        modelCRUD.setTableName("UserDailyActivity");
         modelCRUD.setAction("CreateUpdate");
 
         // Set modelCurdRequest

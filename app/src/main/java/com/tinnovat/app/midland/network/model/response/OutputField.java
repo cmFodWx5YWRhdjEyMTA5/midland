@@ -1,4 +1,4 @@
-package com.tinnovat.app.midland.network.model.response.update;
+package com.tinnovat.app.midland.network.model.response;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -20,6 +20,9 @@ public class OutputField {
     @Attribute(name = "value", required = false)
     private String val;
 
+    @Attribute(name = "Text", required = false)
+    private String text;
+
     public String getColumn() {
         return column;
     }
@@ -34,5 +37,13 @@ public class OutputField {
 
     public void setVal(String val) {
         this.val = val;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
