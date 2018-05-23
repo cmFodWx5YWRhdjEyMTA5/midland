@@ -70,7 +70,7 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
         documentNo.setText(responseData.getDataSet().get(0).get("DocumentNo"));
         userName.setText(responseData.getDataSet().get(0).get("UserName"));
         Descrptn.setText(responseData.getDataSet().get(0).get("Description"));
-        comnt.setText(responseData.getDataSet().get(0).get("Help"));
+        //comnt.setText(responseData.getDataSet().get(0).get("Help"));
         warehuse.setText(responseData.getDataSet().get(0).get("warehouse"));
         priceList.setText(responseData.getDataSet().get(0).get("PriceList"));
 
