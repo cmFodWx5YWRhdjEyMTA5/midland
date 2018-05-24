@@ -117,4 +117,9 @@
     <string name="total_estimated_measurement_summary">Total Estimated Measurement Summary</string>
     <string name="total_actual_measurement_summary">Total Actual Measurement Summary</string>
     <string name="approved">Approved</string>
+    <string name="bank_ac">Bank Ac</string>
+    <string name="amount">Amount</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="mode_of_payment">Mode of Payment</string>
+    <string name="payment_id">Payment ID</string>
 </resources>

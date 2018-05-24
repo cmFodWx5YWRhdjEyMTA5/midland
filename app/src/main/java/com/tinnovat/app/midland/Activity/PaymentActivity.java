@@ -2,6 +2,7 @@ package com.tinnovat.app.midland.Activity;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -12,12 +13,16 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.Objects;
 
 public class PaymentActivity extends AppCompatActivity {
+
+    LinearLayout paymentApproval;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -31,15 +36,15 @@ public class PaymentActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#489684" )));
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.color_payment));
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+
+        paymentApproval = findViewById(R.id.paymentApproval);
+
+        paymentApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), UserTaskViewActivity.class);
+                startActivity(Intent);
+            }
+        });
     }
 }

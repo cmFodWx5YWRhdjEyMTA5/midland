@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/payment_id"/>
+
+                <TextView
+                    android:id="@+id/paymentId"
+                    style="@style/text_description"
+                    />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/document_no"/>
+
+                <TextView
+                    android:id="@+id/docNo"
+                    style="@style/text_description"
+                   />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/organisation" />
+
+                <TextView
+                    android:id="@+id/org"
+                    style="@style/text_description"
+                     />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/bank_ac" />
+
+                <TextView
+                    android:id="@+id/bankAc"
+                    style="@style/text_description"
+                     />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/amount" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    style="@style/text_description"
+                     />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/business_partner" />
+
+                <TextView
+                    android:id="@+id/partner"
+                    style="@style/text_description"
+                    />
+            </LinearLayout>
+
+            <View style="@style/line_style" />
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/payment_date" />
+
+                <TextView
+                    android:id="@+id/paymentDate"
+                    style="@style/text_description"/>
+            </LinearLayout>
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/mode_of_payment" />
+
+                <TextView
+                    android:id="@+id/modeOfPayment"
+                    style="@style/text_description"
+                    />
+            </LinearLayout>
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title"
+                    android:text="@string/description" />
+
+                <TextView
+                    style="@style/text_description"
+                    android:visibility="invisible"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/description_box"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/button_ruby"
+            android:text="@string/approve" />
+
+        <TextView
+            style="@style/button_gray"
+            android:text="@string/reject" />
+
+    </LinearLayout>
+
+</RelativeLayout>
