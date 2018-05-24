@@ -24,6 +24,7 @@
                     android:text="@string/organisation"/>
 
                 <TextView
+                    android:id="@+id/org"
                     style="@style/text_description"
                     android:text="TextView"/>
             </LinearLayout>
@@ -40,6 +41,7 @@
                     android:text="@string/project" />
 
                 <TextView
+                    android:id="@+id/project"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -56,6 +58,7 @@
                     android:text="@string/sub_project_1" />
 
                 <TextView
+                    android:id="@+id/subPro1"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -72,6 +75,7 @@
                     android:text="@string/sub_project_2" />
 
                 <TextView
+                    android:id="@+id/subPro2"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -88,6 +92,7 @@
                     android:text="@string/phase" />
 
                 <TextView
+                    android:id="@+id/phase"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -104,6 +109,7 @@
                     android:text="@string/task" />
 
                 <TextView
+                    android:id="@+id/task"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -120,6 +126,7 @@
                     android:text="@string/sub_task" />
 
                 <TextView
+                    android:id="@+id/subTask"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -136,6 +143,7 @@
                     android:text="@string/work_name" />
 
                 <TextView
+                    android:id="@+id/workName"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -149,9 +157,10 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="@string/estimated" />
+                    android:text="@string/actual_amount" />
 
                 <TextView
+                    android:id="@+id/actualAmount"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -167,9 +176,10 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="@string/estimated_rate" />
+                    android:text="@string/actual_rate" />
 
                 <TextView
+                    android:id="@+id/actualRate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -186,6 +196,7 @@
                     android:text="@string/estimated_amount" />
 
                 <TextView
+                    android:id="@+id/estimatedAmount"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -199,9 +210,10 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="@string/actual" />
+                    android:text="@string/rate" />
 
                 <TextView
+                    android:id="@+id/rate"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -215,9 +227,10 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="Actual Rate" />
+                    android:text="@string/total_estimated_measurement_summary" />
 
                 <TextView
+                    android:id="@+id/totalEstMeasurementSummary"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>
@@ -231,9 +244,10 @@
 
                 <TextView
                     style="@style/text_title"
-                    android:text="Actual Amount" />
+                    android:text="@string/total_actual_measurement_summary" />
 
                 <TextView
+                    android:id="@+id/totalActualMeasurementSummary"
                     style="@style/text_description"
                     android:text="TextView" />
             </LinearLayout>

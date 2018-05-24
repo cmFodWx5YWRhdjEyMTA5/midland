@@ -110,4 +110,9 @@
     <string name="requested_to_role">Requested to Role</string>
     <string name="requested_type">Requested Type</string>
     <string name="balance_utilised_amount">Balance Utilised Amount</string>
+    <string name="actual_amount">Actual Amount</string>
+    <string name="actual_rate">Actual Rate</string>
+    <string name="rate">Rate</string>
+    <string name="total_estimated_measurement_summary">Total Estimated Measurement Summary</string>
+    <string name="total_actual_measurement_summary">Total Actual Measurement Summary</string>
 </resources>
