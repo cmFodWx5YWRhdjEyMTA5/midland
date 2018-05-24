@@ -65,7 +65,7 @@ public class StatusPageActivity extends AppCompatActivity {
         availableCreditStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Intent = new Intent(getApplicationContext(), CashRequisitionStatusActivity.class);
+                Intent Intent = new Intent(getApplicationContext(), AvailableCreditStatusActivity.class);
                 startActivity(Intent);
             }
         });
