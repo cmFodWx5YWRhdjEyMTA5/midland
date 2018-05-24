@@ -16,6 +16,13 @@ import android.widget.RelativeLayout;
 public class LandingPageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    RelativeLayout workStatusLayout;
+    RelativeLayout approvalLayout;
+    RelativeLayout paymentLayout;
+    RelativeLayout requestLayout;
+    RelativeLayout statusLayout;
+    RelativeLayout taskLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +30,12 @@ public class LandingPageActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RelativeLayout workStatusLayout = findViewById(R.id.layoutWork);
-        RelativeLayout approvalLayout = findViewById(R.id.layoutApproval);
-        RelativeLayout paymentLayout = findViewById(R.id.layoutPayment);
-        RelativeLayout requestLayout = findViewById(R.id.layoutRequest);
-        RelativeLayout statusLayout = findViewById(R.id.layoutStatus);
-        RelativeLayout taskLayout = findViewById(R.id.layoutTask);
+         workStatusLayout = findViewById(R.id.layoutWork);
+         approvalLayout = findViewById(R.id.layoutApproval);
+         paymentLayout = findViewById(R.id.layoutPayment);
+         requestLayout = findViewById(R.id.layoutRequest);
+         statusLayout = findViewById(R.id.layoutStatus);
+         taskLayout = findViewById(R.id.layoutTask);
 
 
         workStatusLayout.setOnClickListener(new View.OnClickListener() {
