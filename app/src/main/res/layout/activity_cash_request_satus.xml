@@ -20,6 +20,7 @@
                 android:text="@string/requested_date" />
 
             <TextView
+                android:id="@+id/reqDate"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -36,6 +37,7 @@
                 android:text="@string/requested_to_user_role" />
 
             <TextView
+                android:id="@+id/reqRole"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -52,6 +54,7 @@
                 android:text="@string/total_amount" />
 
             <TextView
+                android:id="@+id/totalAmount"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -68,6 +71,7 @@
                 android:text="@string/request_type" />
 
             <TextView
+                android:id="@+id/reqType"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>
@@ -84,8 +88,9 @@
                 android:text="@string/status" />
 
             <TextView
+                android:id="@+id/status"
                 style="@style/text_description"
-                android:text="TextView" />
+                 />
         </LinearLayout>
 
         <View style="@style/line_style" />
@@ -101,6 +106,7 @@
                 android:text="@string/approved_amount" />
 
             <TextView
+                android:id="@+id/approvalAmount"
                 style="@style/text_description"
                 android:text="TextView" />
         </LinearLayout>

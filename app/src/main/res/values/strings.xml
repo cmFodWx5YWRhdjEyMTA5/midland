@@ -48,6 +48,7 @@
     <string name="is_forward">Is Forward</string>
     <string name="approve">Approve</string>
     <string name="reject">Reject</string>
+    <string name="rejected">Rejected</string>
     <string name="notified_by">Notified By</string>
     <string name="requisition_record">Requisition Record</string>
     <string name="requisition_value">Requisition Value</string>
@@ -115,4 +116,5 @@
     <string name="rate">Rate</string>
     <string name="total_estimated_measurement_summary">Total Estimated Measurement Summary</string>
     <string name="total_actual_measurement_summary">Total Actual Measurement Summary</string>
+    <string name="approved">Approved</string>
 </resources>
