@@ -106,7 +106,7 @@
     <string name="available_credit">Available Credit</string>
     <string name="request_type">Request Type</string>
     <string name="requested_to_user_role">Requested to User/Role</string>
-    <string name="date_utilized">Date Utilized</string>
+    <string name="date_utilized">Utilized </string>
     <string name="requested_to_user">Requested to User</string>
     <string name="requested_to_role">Requested to Role</string>
     <string name="requested_type">Requested Type</string>
