@@ -120,7 +120,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
                // response.body().getBody().getQueryDataResponse().getData().getRecordId()
 
                 StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
-                if (data.getFieldData() != null) {
+                if (response.body().getBody().getQueryDataResponse().getData().getErrorMessage() == null && data.getFieldData() != null) {
                     List<OutputField> list = data.getFieldData().getOutputFieldList();
                     if (list != null && !list.isEmpty()) {
                         for (OutputField listItem : list) {
