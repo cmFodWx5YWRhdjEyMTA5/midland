@@ -26,6 +26,8 @@ import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope
 import com.tinnovat.app.midland.network.model.request.update.UpdateDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.update.UpdateRequestData;
 import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.OutputField;
+import com.tinnovat.app.midland.network.model.response.StandardResponse;
 import com.tinnovat.app.midland.network.model.response.query.DataRow;
 import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
 import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
@@ -59,6 +61,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
     TextView reject;
     CheckBox isVerified;
     CheckBox isFrwd;
+    private String mIsApproved = null;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -110,11 +113,21 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
 
         Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
         call.enqueue(new Callback<UpdateResponseEnvelope>() {
+
             @Override
             public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
                // response.body().getBody().getQueryDataResponse().getData().getRecordId()
 
-                 //(response.body().getBody().getQueryDataResponse().getData().getFieldData())
+                StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
+                if (data.getFieldData() != null) {
+                    List<OutputField> list = data.getFieldData().getOutputFieldList();
+                    if (list != null && !list.isEmpty()) {
+                        for (OutputField listItem : list) {
+                            if (listItem.getColumn().equalsIgnoreCase("isAppeoved"))
+                                mIsApproved = listItem.getVal();
+                        }
+                    }
+                }
                 Log.e("Success","Success");
             }
 
