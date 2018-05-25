@@ -62,6 +62,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
     CheckBox isVerified;
     CheckBox isFrwd;
     private String mIsApproved = null;
+    private String mRequestId;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -123,8 +124,11 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
                     List<OutputField> list = data.getFieldData().getOutputFieldList();
                     if (list != null && !list.isEmpty()) {
                         for (OutputField listItem : list) {
-                            if (listItem.getColumn().equalsIgnoreCase("isAppeoved"))
+                            if (listItem.getColumn().equalsIgnoreCase("IsApproved"))
                                 mIsApproved = listItem.getVal();
+                            if (listItem.getColumn().equalsIgnoreCase("SC_Request_ID"))
+                                mRequestId = listItem.getVal();
+
                         }
                     }
                 }
