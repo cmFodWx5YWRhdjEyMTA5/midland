@@ -23,6 +23,40 @@ public class OutputField {
     @Attribute(name = "Text", required = false)
     private String text;
 
+    public String getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(String isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public String getIsRejected() {
+        return isRejected;
+    }
+
+    public void setIsRejected(String isRejected) {
+        this.isRejected = isRejected;
+    }
+
+    public String getRequestID() {
+        return RequestID;
+    }
+
+    public void setRequestID(String requestID) {
+        RequestID = requestID;
+    }
+
+    //Todo changed
+    @Attribute(name = "IsApproved", required = false)
+    private String isApproved;
+
+    @Attribute(name = "SC_Rejected", required = false)
+    private String isRejected;
+
+    @Attribute(name = "SC_Request_ID", required = false)
+    private String RequestID;
+
     public String getColumn() {
         return column;
     }

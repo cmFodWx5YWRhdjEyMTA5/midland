@@ -15,6 +15,7 @@ import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
+import com.tinnovat.app.midland.network.model.request.create.CreateRequestEnvelope;
 import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.DataRowRequest;
 import com.tinnovat.app.midland.network.model.request.FieldData;
@@ -22,10 +23,14 @@ import com.tinnovat.app.midland.network.model.request.ModelCRUD;
 import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestData;
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.update.UpdateDataRequestBody;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestData;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
 import com.tinnovat.app.midland.network.model.response.query.DataRow;
 import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
 import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
 import com.tinnovat.app.midland.network.model.response.query.WindowTabData;
+import com.tinnovat.app.midland.network.model.response.update.UpdateResponseEnvelope;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +55,8 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
     TextView approvalAmnt;
     TextView frwdToUser;
     TextView frwdToRole;
+    TextView approve;
+    TextView reject;
     CheckBox isVerified;
     CheckBox isFrwd;
 
@@ -75,10 +82,68 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
         frwdToRole = findViewById(R.id.frwdToRole);
         isVerified = findViewById(R.id.checkBoxVerified);
         isFrwd = findViewById(R.id.checkBoxForward);
+        approve = findViewById(R.id.approve);
+        reject = findViewById(R.id.reject);
 
 
         initiateService();
+
+        approve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                approve();
+            }
+        });
+
+        reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reject();
+            }
+        });
     }
+
+    private void approve(){
+        //TODO add or change methods accordingly
+        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved","Y");
+      //  QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
+
+        Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
+        call.enqueue(new Callback<UpdateResponseEnvelope>() {
+            @Override
+            public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+               // response.body().getBody().getQueryDataResponse().getData().getRecordId()
+
+                 //(response.body().getBody().getQueryDataResponse().getData().getFieldData())
+                Log.e("Success","Success");
+            }
+
+            @Override
+            public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                Log.e("Success","Success");
+            }
+        });
+    }
+
+    private void reject(){
+        //TODO add or change methods accordingly
+        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("SC_Rejected","Y");
+        //  QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
+
+        Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
+        call.enqueue(new Callback<UpdateResponseEnvelope>() {
+            @Override
+            public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+                Log.e("Success","Success");
+            }
+
+            @Override
+            public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                Log.e("Success","Success");
+            }
+        });
+    }
+
     private void initiateService() {
 
         //TODO add or change methods accordingly
@@ -138,6 +203,64 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
         else
             isFrwd.setVisibility(View.INVISIBLE);
         }
+
+    @NonNull
+    private UpdateRequestEnvelope getUpdateRequestEnvelopeGeneral(String approve , String val) {
+
+        UpdateRequestEnvelope envelope = new UpdateRequestEnvelope();
+        UpdateDataRequestBody body = new UpdateDataRequestBody();
+        final UpdateRequestData data = new UpdateRequestData();
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("SuperUser");
+        loginRequest.setPass("System");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000004);
+        loginRequest.setStage(0);
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+         List<FieldData> fieldDataList = new ArrayList<>();
+
+       FieldData fieldData = new FieldData(approve,val);
+
+        fieldDataList.add(fieldData);
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_CashRequisitionAprroval_Update");
+        modelCRUD.setRecordID("1000236");
+       // modelCRUD.setTableName("MLV_cashreq");
+        //  modelCRUD.setAction("action");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to QueryRequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set QueryRequestData object to QueryDataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set QueryDataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+    }
 
     @NonNull
     private QueryRequestEnvelope getRequestEnvelopeGeneral() {

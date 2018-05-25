@@ -48,6 +48,8 @@ public class RequestActivity extends AppCompatActivity {
         cashReqStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), CashRequestActivity.class);
+                startActivity(Intent);
 
             }
         });
