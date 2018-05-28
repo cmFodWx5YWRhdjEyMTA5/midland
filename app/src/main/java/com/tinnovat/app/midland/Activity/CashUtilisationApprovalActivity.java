@@ -118,7 +118,7 @@ public class CashUtilisationApprovalActivity extends AppCompatActivity {
                                 mIsApproved = listItem.getVal();
                             if (listItem.getColumn().equalsIgnoreCase("SC_Rejected"))
                                 mIsRejected = listItem.getVal();
-                            if (listItem.getColumn().equalsIgnoreCase("SC_Request_ID"))
+                            if (listItem.getColumn().equalsIgnoreCase("SC_Resourse_Utilization_ID"))
                                 mRequestId = listItem.getVal();
 
                         }
@@ -220,8 +220,8 @@ public class CashUtilisationApprovalActivity extends AppCompatActivity {
 
         // Set modelCurd
         modelCRUD.setDataRow(dataRow);
-        modelCRUD.setServiceType("MLW_CashRequisitionAprroval_Update");
-        modelCRUD.setRecordID("1000236");
+        modelCRUD.setServiceType("MLW_CashUtilizationAprroval_Update");
+        modelCRUD.setRecordID("1000080");
         // modelCRUD.setTableName("MLV_cashreq");
         //  modelCRUD.setAction("action");
 
