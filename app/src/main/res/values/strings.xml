@@ -122,4 +122,6 @@
     <string name="payment_date">Payment Date</string>
     <string name="mode_of_payment">Mode of Payment</string>
     <string name="payment_id">Payment ID</string>
+    <string name="assigned_to">Assigned To</string>
+    <string name="create_task">Create Task</string>
 </resources>
