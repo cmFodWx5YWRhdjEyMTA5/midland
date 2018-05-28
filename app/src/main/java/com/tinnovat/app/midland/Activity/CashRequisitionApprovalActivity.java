@@ -15,7 +15,6 @@ import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
-import com.tinnovat.app.midland.network.model.request.create.CreateRequestEnvelope;
 import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody;
 import com.tinnovat.app.midland.network.model.request.DataRowRequest;
 import com.tinnovat.app.midland.network.model.request.FieldData;
@@ -62,7 +61,8 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
     CheckBox isVerified;
     CheckBox isFrwd;
     private String mIsApproved = null;
-    private String mRequestId;
+    private String mIsRejected = null;
+    private String mRequestId = null;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -95,29 +95,27 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
         approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                approve();
+                action("Y" ,"N");
             }
         });
 
         reject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reject();
+                action("N","Y");
             }
         });
     }
 
-    private void approve(){
+    private void action( String approveVal , String rejectVal){
         //TODO add or change methods accordingly
-        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved","Y");
-      //  QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
+        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved",approveVal,"SC_Rejected" ,rejectVal);
 
         Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
         call.enqueue(new Callback<UpdateResponseEnvelope>() {
 
             @Override
             public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
-               // response.body().getBody().getQueryDataResponse().getData().getRecordId()
 
                 StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
                 if (response.body().getBody().getQueryDataResponse().getData().getErrorMessage() == null && data.getFieldData() != null) {
@@ -126,37 +124,23 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
                         for (OutputField listItem : list) {
                             if (listItem.getColumn().equalsIgnoreCase("IsApproved"))
                                 mIsApproved = listItem.getVal();
+                            if (listItem.getColumn().equalsIgnoreCase("SC_Rejected"))
+                                mIsRejected = listItem.getVal();
                             if (listItem.getColumn().equalsIgnoreCase("SC_Request_ID"))
                                 mRequestId = listItem.getVal();
 
                         }
                     }
                 }
-                Log.e("Success","Success");
+                if (mIsApproved != null && mIsRejected != null && mRequestId != null){
+                    finish();
+                    Toast.makeText(CashRequisitionApprovalActivity.this,"Completed ",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
-                Log.e("Success","Success");
-            }
-        });
-    }
-
-    private void reject(){
-        //TODO add or change methods accordingly
-        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("SC_Rejected","Y");
-        //  QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
-
-        Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
-        call.enqueue(new Callback<UpdateResponseEnvelope>() {
-            @Override
-            public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
-                Log.e("Success","Success");
-            }
-
-            @Override
-            public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
-                Log.e("Success","Success");
+                Toast.makeText(CashRequisitionApprovalActivity.this,"Failed ",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -179,7 +163,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
-                Log.e("Success","Success");
+                Log.e("Failed","Failed");
                 Toast.makeText(CashRequisitionApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });
@@ -222,7 +206,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
         }
 
     @NonNull
-    private UpdateRequestEnvelope getUpdateRequestEnvelopeGeneral(String approve , String val) {
+    private UpdateRequestEnvelope getUpdateRequestEnvelopeGeneral(String approve , String approveVal,String reject , String rejectVal) {
 
         UpdateRequestEnvelope envelope = new UpdateRequestEnvelope();
         UpdateDataRequestBody body = new UpdateDataRequestBody();
@@ -249,9 +233,13 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
         // Params inside dataRow as list (can use a loop or simply add objects to list
          List<FieldData> fieldDataList = new ArrayList<>();
 
-       FieldData fieldData = new FieldData(approve,val);
+      /* FieldData fieldDataApprove = new FieldData(approve,approveVal);
+       FieldData fieldDataReject = new FieldData(reject,rejectVal);*/
 
-        fieldDataList.add(fieldData);
+        fieldDataList.add(new FieldData(approve,approveVal));
+        fieldDataList.add(new FieldData(reject,rejectVal));
+
+       // fieldDataList.add(fieldDataReject);
 
         dataRow.setField(fieldDataList);
 
