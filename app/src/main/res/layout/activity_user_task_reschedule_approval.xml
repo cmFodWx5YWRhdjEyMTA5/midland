@@ -146,10 +146,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/approve"
             style="@style/button_ruby"
             android:text="@string/approve" />
 
         <TextView
+            android:id="@+id/reject"
             style="@style/button_gray"
             android:text="@string/reject" />
 

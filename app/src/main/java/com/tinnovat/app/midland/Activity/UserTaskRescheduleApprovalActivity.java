@@ -22,10 +22,16 @@ import com.tinnovat.app.midland.network.model.request.ModelCRUD;
 import com.tinnovat.app.midland.network.model.request.ModelCRUDRequest;
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestData;
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
+import com.tinnovat.app.midland.network.model.request.update.UpdateDataRequestBody;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestData;
+import com.tinnovat.app.midland.network.model.request.update.UpdateRequestEnvelope;
+import com.tinnovat.app.midland.network.model.response.OutputField;
+import com.tinnovat.app.midland.network.model.response.StandardResponse;
 import com.tinnovat.app.midland.network.model.response.query.DataRow;
 import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
 import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
 import com.tinnovat.app.midland.network.model.response.query.WindowTabData;
+import com.tinnovat.app.midland.network.model.response.update.UpdateResponseEnvelope;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +51,11 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
     TextView status;
     TextView startDate;
     TextView completedDate;
+    TextView approve;
+    TextView reject;
+    private String mIsApproved = null;
+    private String mIsRejected = null;
+    private String mRequestId = null;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -60,9 +71,68 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
         status = findViewById(R.id.status);
         startDate = findViewById(R.id.startDate);
         completedDate = findViewById(R.id.completedDate);
+        approve = findViewById(R.id.approve);
+        reject = findViewById(R.id.reject);
 
         initiateService();
+
+        approve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action("Y" ,"N");
+            }
+        });
+
+        reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action("N","Y");
+            }
+        });
     }
+
+    private void action( String approveVal , String rejectVal){
+        //TODO add or change methods accordingly
+        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved",approveVal,"SC_Rejected" ,rejectVal);
+
+        Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
+        call.enqueue(new Callback<UpdateResponseEnvelope>() {
+
+            @Override
+            public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+
+                StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
+                if (response.body().getBody().getQueryDataResponse().getData().getErrorMessage() == null && data.getFieldData() != null) {
+                    List<OutputField> list = data.getFieldData().getOutputFieldList();
+                    if (list != null && !list.isEmpty()) {
+                        for (OutputField listItem : list) {
+                            if (listItem.getColumn().equalsIgnoreCase("IsApproved"))
+                                mIsApproved = listItem.getVal();
+                            if (listItem.getColumn().equalsIgnoreCase("SC_Rejected"))
+                                mIsRejected = listItem.getVal();
+                            if (listItem.getColumn().equalsIgnoreCase("SC_UserTask_ID"))
+                                mRequestId = listItem.getVal();
+
+                        }
+                    }
+                }else {
+                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"error ",Toast.LENGTH_SHORT).show();
+                }
+                if (mIsApproved != null && mIsRejected != null && mRequestId != null){
+                    //  finish();
+                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Completed "+mIsApproved+" : " +mIsRejected,Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"error null ",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Failed ",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void setData(Data responseData){
         Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Success",Toast.LENGTH_SHORT).show();
         //rescheduleDetails.setText(responseData.getDataSet().get(0).get("organisation"));
@@ -121,7 +191,67 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
 
     }
 
+    @NonNull
+    private UpdateRequestEnvelope getUpdateRequestEnvelopeGeneral(String approve , String approveVal,String reject , String rejectVal) {
 
+        UpdateRequestEnvelope envelope = new UpdateRequestEnvelope();
+        UpdateDataRequestBody body = new UpdateDataRequestBody();
+        final UpdateRequestData data = new UpdateRequestData();
+        ModelCRUDRequest modelCRUDRequest = new ModelCRUDRequest();
+
+        ADLoginRequest loginRequest = new ADLoginRequest();
+
+        ModelCRUD modelCRUD = new ModelCRUD();
+
+        DataRowRequest dataRow = new DataRowRequest();
+
+
+        //TODO set all available data's here
+        loginRequest.setClientID(1000000);
+        loginRequest.setUser("MidlandAdmin");
+        loginRequest.setPass("MidlandAdmin");
+        loginRequest.setLang("en_US");
+        loginRequest.setRoleID(1000000);
+        loginRequest.setOrgID(1000000);
+        loginRequest.setWarehouseID(1000000);
+        loginRequest.setStage(0);
+
+        // Params inside dataRow as list (can use a loop or simply add objects to list
+        List<FieldData> fieldDataList = new ArrayList<>();
+
+      /* FieldData fieldDataApprove = new FieldData(approve,approveVal);
+       FieldData fieldDataReject = new FieldData(reject,rejectVal);*/
+
+        fieldDataList.add(new FieldData(approve,approveVal));
+        fieldDataList.add(new FieldData(reject,rejectVal));
+
+        // fieldDataList.add(fieldDataReject);
+
+        dataRow.setField(fieldDataList);
+
+        // Set modelCurd
+        modelCRUD.setDataRow(dataRow);
+        modelCRUD.setServiceType("MLW_Update_User_Task_Reschedule_Approval");
+        modelCRUD.setRecordID("1000013");
+       // modelCRUD.setTableName("SC_UserTask");
+        //  modelCRUD.setAction("action");
+
+        // Set modelCurdRequest
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        modelCRUDRequest.setModelCRUD(modelCRUD);
+
+        // Set modelCurdRequest to QueryRequestData
+        data.setCduRequest(modelCRUDRequest);
+
+        //Set QueryRequestData object to QueryDataRequestBody
+        body.setUsStatesRequestData(data);
+
+        //Set QueryDataRequestBody object to RequestEnvelope
+        envelope.setBody(body);
+
+        modelCRUDRequest.setLoginRequest(loginRequest);
+        return envelope;
+    }
 
     @NonNull
     private QueryRequestEnvelope getRequestEnvelopeGeneral() {
