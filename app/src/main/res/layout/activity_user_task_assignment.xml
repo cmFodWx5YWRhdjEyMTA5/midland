@@ -22,7 +22,14 @@
                     style="@style/text_title"
                     android:text="@string/assigned_to"/>
 
+                <Spinner
+                    android:id="@+id/spinner"
+                    style="@style/edittext_description"
+                    android:layout_height="wrap_content"
+                     />
+
                 <EditText
+                    android:visibility="gone"
                     android:id="@+id/assignedTo"
                     style="@style/edittext_description"
                     android:background="@drawable/textview_border"
