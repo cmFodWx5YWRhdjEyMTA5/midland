@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -37,7 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AvailableCreditStatusActivity extends AppCompatActivity {
+public class AvailableCreditStatusActivity extends BaseActivity {
 
     TextView partner;
     TextView pendingCredit;
@@ -47,11 +48,10 @@ public class AvailableCreditStatusActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_credit_status);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Available Credit Status");
+        setTitle("Available Credit Status");
 
         partner = findViewById(R.id.partner);
         pendingCredit = findViewById(R.id.pendingCredit);
@@ -73,6 +73,8 @@ public class AvailableCreditStatusActivity extends AppCompatActivity {
 
     private void initiateService() {
 
+
+        startLoading();
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
 
@@ -81,7 +83,7 @@ public class AvailableCreditStatusActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
-
+                endLoading();
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
                 setData(responseData);
                 Toast.makeText(AvailableCreditStatusActivity.this,"Success",Toast.LENGTH_SHORT).show();
@@ -90,7 +92,8 @@ public class AvailableCreditStatusActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
-                Toast.makeText(AvailableCreditStatusActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                endLoading();
+                Toast.makeText(AvailableCreditStatusActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 

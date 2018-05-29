@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -43,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CashRequisitionApprovalActivity extends AppCompatActivity {
+public class CashRequisitionApprovalActivity extends BaseActivity {
 
     TextView reqBy;
     TextView docNo;
@@ -67,11 +68,10 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_requisition_approval);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Cash Requisition Approval");
+        setTitle("Cash Requisition Approval");
 
         reqBy = findViewById(R.id.requestedBy);
         docNo = findViewById(R.id.docNo);
@@ -108,14 +108,16 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
     }
 
     private void action( String approveVal , String rejectVal){
+        startLoading();
         //TODO add or change methods accordingly
-        UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved",approveVal,"SC_Rejected" ,rejectVal);
+        final UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved",approveVal,"SC_Rejected" ,rejectVal);
 
         Call<UpdateResponseEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchUpdateData(envelope);
         call.enqueue(new Callback<UpdateResponseEnvelope>() {
 
             @Override
             public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+                endLoading();
 
                 StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
                 if (response.body().getBody().getQueryDataResponse().getData().getErrorMessage() == null && data.getFieldData() != null) {
@@ -140,21 +142,24 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                endLoading();
                 Toast.makeText(CashRequisitionApprovalActivity.this,"Failed ",Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
-        QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
+        final QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
 
         Call<ResponseQueryEnvelope> call = ApiClient.getApiClient().create(ApiInterface.class).fetchQueryData(envelope);
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
+                endLoading();
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
                 setData(responseData);
@@ -164,6 +169,7 @@ public class CashRequisitionApprovalActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Failed","Failed");
+                endLoading();
                 Toast.makeText(CashRequisitionApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });

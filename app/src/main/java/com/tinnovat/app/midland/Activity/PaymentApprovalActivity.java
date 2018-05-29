@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -35,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PaymentApprovalActivity extends AppCompatActivity {
+public class PaymentApprovalActivity extends BaseActivity {
 
     TextView docNo;
     TextView org;
@@ -49,11 +50,10 @@ public class PaymentApprovalActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_approval);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Payment Approval");
+        setTitle("Payment Approval");
 
         paymentId = findViewById(R.id.paymentId);
         docNo = findViewById(R.id.docNo);
@@ -82,6 +82,7 @@ public class PaymentApprovalActivity extends AppCompatActivity {
     }
 
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -90,6 +91,7 @@ public class PaymentApprovalActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                endLoading();
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -99,8 +101,8 @@ public class PaymentApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
-                Log.e("Success","Success");
-                Toast.makeText(PaymentApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                endLoading();
+                Toast.makeText(PaymentApprovalActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 

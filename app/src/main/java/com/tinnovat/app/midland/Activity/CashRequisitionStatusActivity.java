@@ -7,17 +7,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.adapter.PagerAdapter;
 
-public class CashRequisitionStatusActivity extends AppCompatActivity {
+public class CashRequisitionStatusActivity extends BaseActivity {
 
     @SuppressLint("ResourceAsColor")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_requisition_status);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Cash Requisition Status");
+        setTitle("Cash Requisition Status");
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("PENDING"));

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -38,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CashRequestStatusActivity extends AppCompatActivity {
+public class CashRequestStatusActivity extends BaseActivity {
 
     TextView reqDate;
     TextView reqRole;
@@ -49,11 +50,10 @@ public class CashRequestStatusActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_request_satus);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Cash Request Status");
+        setTitle("Cash Request Status");
 
         reqDate = findViewById(R.id.reqDate);
         reqRole = findViewById(R.id.reqRole);
@@ -89,6 +89,7 @@ public class CashRequestStatusActivity extends AppCompatActivity {
     }
 
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -98,6 +99,7 @@ public class CashRequestStatusActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
+                endLoading();
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
                 setData(responseData);
@@ -107,7 +109,8 @@ public class CashRequestStatusActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
-                Toast.makeText(CashRequestStatusActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                endLoading();
+                Toast.makeText(CashRequestStatusActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 

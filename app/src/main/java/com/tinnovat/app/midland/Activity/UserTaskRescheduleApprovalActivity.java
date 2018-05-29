@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -43,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
+public class UserTaskRescheduleApprovalActivity extends BaseActivity {
 
     CheckBox reschedule;
     CheckBox complete;
@@ -59,11 +60,10 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_task_reschedule_approval);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("User Task Reschedule Approval");
+        setTitle("User Task Reschedule Approval");
 
         reschedule = findViewById(R.id.checkBoxReschedule);
         complete = findViewById(R.id.checkBoxComplete);
@@ -92,6 +92,7 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
     }
 
     private void action( String approveVal , String rejectVal){
+        startLoading();
         //TODO add or change methods accordingly
         UpdateRequestEnvelope envelope = getUpdateRequestEnvelopeGeneral("IsApproved",approveVal,"SC_Rejected" ,rejectVal);
 
@@ -100,6 +101,7 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<UpdateResponseEnvelope> call, Response<UpdateResponseEnvelope> response) {
+                endLoading();
 
                 StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
                 if (response.body().getBody().getQueryDataResponse().getData().getErrorMessage() == null && data.getFieldData() != null) {
@@ -116,18 +118,20 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
                         }
                     }
                 }else {
-                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"error ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Network Error ",Toast.LENGTH_SHORT).show();
+
                 }
                 if (mIsApproved != null && mIsRejected != null && mRequestId != null){
-                    //  finish();
+                    finish();
                     Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Completed "+mIsApproved+" : " +mIsRejected,Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"error null ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<UpdateResponseEnvelope> call, Throwable t) {
+                endLoading();
                 Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Failed ",Toast.LENGTH_SHORT).show();
             }
         });
@@ -167,6 +171,7 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
 
     }
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -175,6 +180,7 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                endLoading();
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -184,8 +190,9 @@ public class UserTaskRescheduleApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
+                endLoading();
                 Log.e("Success","Success");
-                Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserTaskRescheduleApprovalActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 

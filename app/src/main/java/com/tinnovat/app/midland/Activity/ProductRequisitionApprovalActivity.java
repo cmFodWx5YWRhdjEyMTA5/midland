@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -35,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductRequisitionApprovalActivity extends AppCompatActivity {
+public class ProductRequisitionApprovalActivity extends BaseActivity {
 
     TextView org;
     TextView documentNo;
@@ -48,11 +49,10 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_requisition_approval);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Product Requisition Approval");
+        setTitle("Product Requisition Approval");
 
         org = findViewById(R.id.org);
         documentNo = findViewById(R.id.docNo);
@@ -77,6 +77,7 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
 
     }
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -85,6 +86,7 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                endLoading();
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -94,8 +96,9 @@ public class ProductRequisitionApprovalActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
+                endLoading();
                 Log.e("Success","Success");
-                Toast.makeText(ProductRequisitionApprovalActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProductRequisitionApprovalActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 

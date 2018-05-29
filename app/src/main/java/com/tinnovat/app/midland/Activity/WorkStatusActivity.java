@@ -16,9 +16,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
+import com.tinnovat.app.midland.BaseActivity;
+
 import java.util.Objects;
 
-public class WorkStatusActivity extends AppCompatActivity {
+public class WorkStatusActivity extends BaseActivity {
 
     LinearLayout workStatusReport;
     LinearLayout workStatusReportList;
@@ -27,12 +29,11 @@ public class WorkStatusActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_status);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Work Status");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#BD4470" )));
+        setTitle("Work Status");
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#BD4470" )));
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.color_work));
 

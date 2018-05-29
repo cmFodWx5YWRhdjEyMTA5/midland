@@ -17,9 +17,11 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.tinnovat.app.midland.BaseActivity;
+
 import java.util.Objects;
 
-public class ApprovalsActivity extends AppCompatActivity {
+public class ApprovalsActivity extends BaseActivity {
 
     LinearLayout cashRequisitionApproval;
     LinearLayout cashUtiliApproval;
@@ -30,12 +32,11 @@ public class ApprovalsActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approvals);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Approvals");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#42206F" )));
+        setTitle("Approvals");
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#42206F" )));
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.color_approval));
 

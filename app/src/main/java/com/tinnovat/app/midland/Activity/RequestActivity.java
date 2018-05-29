@@ -15,9 +15,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
+import com.tinnovat.app.midland.BaseActivity;
+
 import java.util.Objects;
 
-public class RequestActivity extends AppCompatActivity {
+public class RequestActivity extends BaseActivity {
 
     LinearLayout cashReqStatus;
     LinearLayout cashUtiRequest;
@@ -25,12 +27,11 @@ public class RequestActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Request");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2C0E09" )));
+        setTitle("Request");
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2C0E09" )));
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.color_request));
 

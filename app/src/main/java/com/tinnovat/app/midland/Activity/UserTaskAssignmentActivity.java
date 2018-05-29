@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -42,7 +43,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserTaskAssignmentActivity extends AppCompatActivity {
+public class UserTaskAssignmentActivity extends BaseActivity {
 
     EditText assignedTo;
     EditText assignedDate;
@@ -61,11 +62,10 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_task_assignment);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("User Task Assignment");
+        setTitle("User Task Assignment");
 
         assignedTo = findViewById(R.id.assignedTo);
         assignedDate = findViewById(R.id.assignedDate);
@@ -199,6 +199,7 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
     }
 
     private void assignedUserTask() {
+        startLoading();
 
         //TODO add or change methods accordingly
 
@@ -208,6 +209,7 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
         call.enqueue(new Callback<CreateResponseEnvelope>() {
             @Override
             public void onResponse(Call<CreateResponseEnvelope> call, Response<CreateResponseEnvelope> response) {
+                endLoading();
 
 
                 StandardResponse data = response.body().getBody().getQueryDataResponse().getData();
@@ -255,18 +257,20 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(UserTaskAssignmentActivity.this,"failed",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserTaskAssignmentActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<CreateResponseEnvelope> call, Throwable t) {
-                Toast.makeText(UserTaskAssignmentActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                endLoading();
+                Toast.makeText(UserTaskAssignmentActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void submitTask() {
+        startLoading();
 
         //TODO add or change methods accordingly
 
@@ -276,6 +280,7 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                endLoading();
                 Toast.makeText(UserTaskAssignmentActivity.this,"Task success ",Toast.LENGTH_SHORT).show();
                 finish();
 
@@ -283,6 +288,7 @@ public class UserTaskAssignmentActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
+                endLoading();
                 Toast.makeText(UserTaskAssignmentActivity.this,"task Failed",Toast.LENGTH_SHORT).show();
             }
         });

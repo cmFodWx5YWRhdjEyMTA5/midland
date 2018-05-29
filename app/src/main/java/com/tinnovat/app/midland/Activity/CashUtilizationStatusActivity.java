@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -37,7 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CashUtilizationStatusActivity extends AppCompatActivity {
+public class CashUtilizationStatusActivity extends BaseActivity {
 
     TextView utiDate;
     TextView reqRole;
@@ -49,11 +50,10 @@ public class CashUtilizationStatusActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_utilization_status);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Cash Utilization Status");
+        setTitle("Cash Utilization Status");
 
         utiDate = findViewById(R.id.utiDate);
         reqRole = findViewById(R.id.reqRole);
@@ -90,6 +90,7 @@ public class CashUtilizationStatusActivity extends AppCompatActivity {
     }
 
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -99,6 +100,7 @@ public class CashUtilizationStatusActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
+                endLoading();
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
                 setData(responseData);
@@ -108,6 +110,7 @@ public class CashUtilizationStatusActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
                 Log.e("Success","Success");
+                endLoading();
                 Toast.makeText(CashUtilizationStatusActivity.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });

@@ -18,9 +18,11 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.tinnovat.app.midland.BaseActivity;
+
 import java.util.Objects;
 
-public class PaymentActivity extends AppCompatActivity {
+public class PaymentActivity extends BaseActivity {
 
     LinearLayout paymentApproval;
 
@@ -28,12 +30,11 @@ public class PaymentActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Payment");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#489684" )));
+        setTitle("Payment");
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#489684" )));
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.color_payment));
 

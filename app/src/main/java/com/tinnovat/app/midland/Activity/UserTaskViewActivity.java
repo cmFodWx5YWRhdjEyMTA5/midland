@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
@@ -35,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserTaskViewActivity extends AppCompatActivity {
+public class UserTaskViewActivity extends BaseActivity {
 
     TextView assgnedBy;
     TextView assgnedDate;
@@ -47,11 +48,10 @@ public class UserTaskViewActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_task_view);
-        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("User Task View");
+        setTitle("User Task View");
 
         assgnedBy = findViewById(R.id.assignedBy);
         assgnedDate = findViewById(R.id.assignedDate);
@@ -77,6 +77,7 @@ public class UserTaskViewActivity extends AppCompatActivity {
 
     }
     private void initiateService() {
+        startLoading();
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getRequestEnvelopeGeneral();
@@ -85,6 +86,7 @@ public class UserTaskViewActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseQueryEnvelope>() {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
+                endLoading();
                 Log.e("Success","Success");
 
                 Data responseData = getParsedData(response.body().getBody().getQueryDataResponse().getData());
@@ -94,8 +96,8 @@ public class UserTaskViewActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseQueryEnvelope> call, Throwable t) {
-                Log.e("Success","Success");
-                Toast.makeText(UserTaskViewActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                endLoading();
+                Toast.makeText(UserTaskViewActivity.this,"Network Error",Toast.LENGTH_SHORT).show();
             }
         });
 
