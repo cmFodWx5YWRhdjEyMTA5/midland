@@ -124,4 +124,5 @@
     <string name="payment_id">Payment ID</string>
     <string name="assigned_to">Assigned To</string>
     <string name="create_task">Create Task</string>
+    <string name="work">Work</string>
 </resources>

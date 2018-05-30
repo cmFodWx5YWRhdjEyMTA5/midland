@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:background="@drawable/curved_corner_option_button_ruby_grey_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+    <TextView
+        style="@style/sub_heading"
+        android:text="@string/project" />
+
+    <TextView
+        android:id="@+id/project"
+        style="@style/listview_workstatus" />
+
+    <TextView
+        style="@style/sub_heading"
+        android:text="@string/work"/>
+
+        <TextView
+        android:id="@+id/work"
+            style="@style/listview_workstatus"
+        />
+
+
+        <TextView
+            style="@style/sub_heading"
+            android:text="@string/work_name" />
+
+        <TextView
+            android:id="@+id/workName"
+            style="@style/listview_workstatus"/>
+        <TextView
+            style="@style/sub_heading"
+            android:text="@string/estimated_rate" />
+
+        <TextView
+            android:id="@+id/estimatedRate"
+            style="@style/listview_workstatus"/>
+        <TextView
+            style="@style/sub_heading"
+            android:text="@string/actual_rate"/>
+        <TextView
+            android:id="@+id/actualRate"
+            style="@style/listview_workstatus" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,11 +17,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".StatusPageActivity">
             <meta-data
@@ -44,7 +46,6 @@
                 android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
         </activity>
         <activity android:name=".TaskActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
@@ -60,7 +61,6 @@
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
         </activity>
         <activity android:name=".CashRequisitionApprovalActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.ApprovalsActivity" />
@@ -116,12 +116,13 @@
                 android:value="com.tinnovat.app.midland.Activity.StatusPageActivity" />
         </activity>
         <activity android:name=".CashRequestActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.RequestActivity" />
         </activity>
         <activity android:name=".NotificationActivity">
+
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.LandingPageActivity" />
@@ -132,10 +133,19 @@
                 android:value="com.tinnovat.app.midland.Activity.PaymentActivity" />
         </activity>
         <activity android:name=".UserTaskAssignmentActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.midland.Activity.TaskActivity" />
+        </activity>
+        <activity android:name=".WorkStatusReportListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.midland.Activity.WorkStatusActivity" />
         </activity>
     </application>
 
