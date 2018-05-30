@@ -56,7 +56,6 @@ public class UserTaskAssignmentActivity extends BaseActivity {
     TextView createTask;
     String recordID = null;
     Spinner spinnerAssignedTo;
-//    String[] country = { "Supervisor1", "Purchase User", "Inventory User", "Supervisor", "Admin User9","MidlandUser","Rinshad"  };
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
