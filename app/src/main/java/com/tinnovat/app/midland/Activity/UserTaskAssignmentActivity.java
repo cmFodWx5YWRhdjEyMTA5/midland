@@ -3,7 +3,6 @@ package com.tinnovat.app.midland.Activity;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tinnovat.app.midland.BaseActivity;
-import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
 import com.tinnovat.app.midland.network.ApiInterface;
 import com.tinnovat.app.midland.network.model.request.ADLoginRequest;
@@ -30,14 +28,15 @@ import com.tinnovat.app.midland.network.model.request.query.QueryDataRequestBody
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestData;
 import com.tinnovat.app.midland.network.model.request.query.QueryRequestEnvelope;
 import com.tinnovat.app.midland.network.model.response.OutputField;
-import com.tinnovat.app.midland.network.model.response.OutputFields;
 import com.tinnovat.app.midland.network.model.response.StandardResponse;
 import com.tinnovat.app.midland.network.model.response.create.CreateResponseEnvelope;
+import com.tinnovat.app.midland.network.model.response.query.ContentDataSet;
+import com.tinnovat.app.midland.network.model.response.query.DataRow;
+import com.tinnovat.app.midland.network.model.response.query.FieldDataResponse;
 import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelope;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +56,7 @@ public class UserTaskAssignmentActivity extends BaseActivity {
     TextView createTask;
     String recordID = null;
     Spinner spinnerAssignedTo;
-    String[] country = { "Supervisor1", "Purchase User", "Inventory User", "Supervisor", "Admin User9","MidlandUser","Rinshad"  };
+//    String[] country = { "Supervisor1", "Purchase User", "Inventory User", "Supervisor", "Admin User9","MidlandUser","Rinshad"  };
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -98,10 +97,10 @@ public class UserTaskAssignmentActivity extends BaseActivity {
           }
       });
 
-        spinnerElements();
+        fetchSpinnerElements();
     }
 
-    private void spinnerElements() {
+    private void fetchSpinnerElements() {
 
         //TODO add or change methods accordingly
         QueryRequestEnvelope envelope = getSpinnerData();
@@ -111,20 +110,23 @@ public class UserTaskAssignmentActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ResponseQueryEnvelope> call, Response<ResponseQueryEnvelope> response) {
                 Log.e("Success","Success");
-                spinnerAssignedTo.setAdapter(new ArrayAdapter<String>(UserTaskAssignmentActivity.this, android.R.layout.simple_spinner_dropdown_item, country));
-             /*  List<OutputFields> list =  response.body().getBody().getQueryDataResponse().getData().getDataSet().getDataRowList().get(0).getFieldData();
-               if (list != null && !list.isEmpty()) {
-                    for ( listItem : response.body().getBody().getQueryDataResponse().getData().getDataSet().getDataRowList()) {
-                      if (listItem.getColumn().equalsIgnoreCase("IsApproved"))
-                            mIsApproved = listItem.getVal();
-                        if (listItem.getColumn().equalsIgnoreCase("SC_Rejected"))
-                            mIsRejected = listItem.getVal();
-                        if (listItem.getColumn().equalsIgnoreCase("SC_Request_ID"))
-                            mRequestId = listItem.getVal();*//*
 
+                ArrayList fieldList = new ArrayList();
+                if (response != null && response.body().getBody() != null && response.body().getBody().getQueryDataResponse() != null &&
+                        response.body().getBody().getQueryDataResponse() != null) {
+                    ContentDataSet dataSet = response.body().getBody().getQueryDataResponse().getData().getDataSet();
+                    if (dataSet != null && dataSet.getDataRowList() != null && !dataSet.getDataRowList().isEmpty()) {
+                        for (DataRow dataRowElement : dataSet.getDataRowList()) {
+                            if (dataRowElement != null && dataRowElement.getFieldData() != null && !dataRowElement.getFieldData().isEmpty())
+                            for (FieldDataResponse filedElement : dataRowElement.getFieldData()) {
+                                fieldList.add(filedElement.getVal());
+                            }
+                        }
                     }
-               }*/
 
+                }
+
+                spinnerAssignedTo.setAdapter(new ArrayAdapter<String>(UserTaskAssignmentActivity.this, android.R.layout.simple_spinner_dropdown_item, fieldList));
 
                 Toast.makeText(UserTaskAssignmentActivity.this,"Success",Toast.LENGTH_SHORT).show();
             }
