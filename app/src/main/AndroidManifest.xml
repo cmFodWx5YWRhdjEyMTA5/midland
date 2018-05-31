@@ -17,11 +17,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
+<!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+-->
         </activity>
         <activity android:name=".StatusPageActivity">
             <meta-data
@@ -120,6 +122,11 @@
                 android:value="com.tinnovat.app.midland.Activity.RequestActivity" />
         </activity>
         <activity android:name=".NotificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
             <meta-data

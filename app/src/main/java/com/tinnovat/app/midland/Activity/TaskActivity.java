@@ -48,7 +48,8 @@ public class TaskActivity extends BaseActivity {
         userTaskAssignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent Intent = new Intent(getApplicationContext(), UserTaskAssignmentActivity.class);
+                startActivity(Intent);
             }
         });
 
