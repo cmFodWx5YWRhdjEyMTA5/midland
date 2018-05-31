@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jackandphantom.blurimage.BlurImage;
 import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.model.Data;
 import com.tinnovat.app.midland.network.ApiClient;
@@ -61,6 +63,7 @@ public class CashUtilisationApprovalActivity extends BaseActivity {
     private String mIsApproved = null;
     private String mIsRejected = null;
     private String mRequestId = null;
+   // ImageView imageView;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -81,6 +84,8 @@ public class CashUtilisationApprovalActivity extends BaseActivity {
         frwrd = findViewById(R.id.checkBoxForward);
         approve = findViewById(R.id.approve);
         reject = findViewById(R.id.reject);
+        //imageView = findViewById(R.id.imageView);
+      //  BlurImage.with(getApplicationContext()).load(R.drawable.bg3).intensity(100).Async(true).into(imageView);
 
         initiateService();
 

@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.tinnovat.app.midland.BaseActivity;
+import com.tinnovat.app.midland.WorkStatusReportListView;
 
 import java.util.Objects;
 
@@ -51,6 +52,8 @@ public class WorkStatusActivity extends BaseActivity {
         workStatusReportList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent Intent = new Intent(getApplicationContext(), WorkStatusReportListActivity.class);
+                startActivity(Intent);
 
             }
         });

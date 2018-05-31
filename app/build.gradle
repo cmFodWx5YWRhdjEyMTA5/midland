@@ -11,6 +11,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+            renderscriptTargetApi 19
+            renderscriptSupportModeEnabled true
+
     }
     buildTypes {
         release {
@@ -50,4 +53,7 @@ dependencies {
 
     // RecyclerView
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+
+    compile 'com.github.lukedeighton:wheelview:0.4.1'
+    compile 'com.jackandphantom.android:blurimage:1.2.0'
 }

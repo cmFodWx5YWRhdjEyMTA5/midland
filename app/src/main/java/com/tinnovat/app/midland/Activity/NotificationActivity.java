@@ -3,6 +3,7 @@ package com.tinnovat.app.midland.Activity;
 import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +16,9 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.lukedeighton.wheelview.WheelView;
+import com.lukedeighton.wheelview.adapter.WheelAdapter;
+import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
 import com.tinnovat.app.midland.BaseActivity;
 import com.tinnovat.app.midland.NotificationView;
 import com.tinnovat.app.midland.adapter.NotificationAdapter;
@@ -50,6 +54,8 @@ public class NotificationActivity extends BaseActivity {
     String message = null;
     String wType = null;
 
+    WheelView wheelView ;
+
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -70,6 +76,26 @@ public class NotificationActivity extends BaseActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         recyclerView.setAdapter(mAdapter);
+
+        wheelView = findViewById(R.id.wheelview);
+        wheelView.setAdapter(new WheelAdapter() {
+            @Override
+            public Drawable getDrawable(int position) {
+                return null;
+            }
+
+            @Override
+            public int getCount() {
+                return 0;
+            }
+        });
+
+        wheelView.setOnWheelItemClickListener(new WheelView.OnWheelItemClickListener() {
+            @Override
+            public void onWheelItemClick(WheelView parent, int position, boolean isSelected) {
+                Toast.makeText(NotificationActivity.this,"test..",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         prepareMovieData();
 
