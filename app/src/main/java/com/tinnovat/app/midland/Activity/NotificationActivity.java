@@ -1,6 +1,9 @@
 package com.tinnovat.app.midland.Activity;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -11,8 +14,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.tinnovat.app.midland.BaseActivity;
@@ -34,6 +40,7 @@ import com.tinnovat.app.midland.network.model.response.query.ResponseQueryEnvelo
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -49,6 +56,7 @@ public class NotificationActivity extends BaseActivity {
     String name = null;
     String message = null;
     String wType = null;
+    Button btn;
 
 
 
@@ -73,7 +81,28 @@ public class NotificationActivity extends BaseActivity {
         recyclerView.setAdapter(mAdapter);
 
         prepareMovieData();
+        btn = findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("Notification");
+            }
+        });
 
+       //
+
+    }
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Toast.makeText(NotificationActivity.this,"Done",Toast.LENGTH_SHORT).show();
+        Intent refresh = new Intent(this, NotificationActivity.class);
+        startActivity(refresh);
+        finish();
     }
 
 

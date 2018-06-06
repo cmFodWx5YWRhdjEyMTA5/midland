@@ -120,6 +120,8 @@ public class LandingPageActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_notification) {
+            Intent Intent = new Intent(getApplicationContext(), NotificationActivity.class);
+            startActivity(Intent);
             return true;
         }
 
